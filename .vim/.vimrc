@@ -41,10 +41,6 @@ call vundle#end()
 " Set new leader
 let mapleader=","
 
-" Set up Pathogen
-"call pathogen#infect()
-"call pathogen#helptags()
-
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
