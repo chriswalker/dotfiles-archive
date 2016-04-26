@@ -17,9 +17,9 @@ set nocompatible
 
 " Vundle
 filetype off " Required for Vundle init, switched back on later
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/dotfiles/.vim/bundle/Vundle.vim
 
-call vundle#begin()
+call vundle#begin('~/dotfiles/.vim/bundle/')
 Plugin 'scrooloose/syntastic'
 Plugin 'fatih/vim-go'
 Plugin 'vim-airline/vim-airline'
