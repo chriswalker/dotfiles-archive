@@ -21,16 +21,21 @@ set rtp+=~/dotfiles/.vim/bundle/Vundle.vim
 
 call vundle#begin('~/dotfiles/.vim/bundle/')
 Plugin 'scrooloose/syntastic'
-Plugin 'fatih/vim-go'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'majutsushi/tagbar'
 Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'jiangmiao/auto-pairs'
+
+if has('macunix')
+  Plugin 'fatih/vim-go'
+  " Don't have Lua compiled into Vim on non-mac machines
+  Plugin 'Shougo/neocomplete.vim'
+endif
+
 " Reminder of other plugins
 "vim-ack
 "vim-commentary
