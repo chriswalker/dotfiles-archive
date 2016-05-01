@@ -106,15 +106,18 @@ let g:ctrlp_custom_ignore = {
 "
 " Vim-go 
 " -----------------------------------------------------------------------------
-filetype plugin indent on
 
-let g:go_highlight_functions=1  
-let g:go_highlight_methods=1  
-let g:go_highlight_structs=1  
-let g:go_highlight_operators=1
-let g:go_highlight_interfaces=1
-let g:go_highlight_build_constraints=1
-let g:go_fmt_command="goimports"
+if has('macunix')
+  filetype plugin indent on
+
+  let g:go_highlight_functions=1  
+  let g:go_highlight_methods=1  
+  let g:go_highlight_structs=1  
+  let g:go_highlight_operators=1
+  let g:go_highlight_interfaces=1
+  let g:go_highlight_build_constraints=1
+  let g:go_fmt_command="goimports"
+endif
 
 "
 " Vim-airline (Powerline equivalent, non-Python)
@@ -137,34 +140,36 @@ set noshowmode
 let g:tagbar_left=1
 let g:tagbar_width=30
 
-" Configuration for Golang, using gotags
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
+if has('macunix')
+  " Configuration for Golang, using gotags
+  let g:tagbar_type_go = {
+      \ 'ctagstype' : 'go',
+      \ 'kinds'     : [
+          \ 'p:package',
+          \ 'i:imports:1',
+          \ 'c:constants',
+          \ 'v:variables',
+          \ 't:types',
+          \ 'n:interfaces',
+          \ 'w:fields',
+          \ 'e:embedded',
+          \ 'm:methods',
+          \ 'r:constructor',
+          \ 'f:functions'
+      \ ],
+      \ 'sro' : '.',
+      \ 'kind2scope' : {
+          \ 't' : 'ctype',
+          \ 'n' : 'ntype'
+      \ },
+      \ 'scope2kind' : {
+          \ 'ctype' : 't',
+          \ 'ntype' : 'n'
+      \ },
+      \ 'ctagsbin'  : 'gotags',
+      \ 'ctagsargs' : '-sort -silent'
+  \ }
+endif
 
 autocmd VimEnter * nested :call tagbar#autoopen(1)
 autocmd FileType * nested :call tagbar#autoopen(0)
@@ -175,9 +180,11 @@ autocmd FileType * nested :call tagbar#autoopen(0)
 "
 " Neocomplete
 " -----------------------------------------------------------------------------
-let g:neocomplete#enable_at_startup=1
-" Close preview after selection
-let g:neocomplete#enable_auto_close_preview=1
+if has('macunix')
+  let g:neocomplete#enable_at_startup=1
+  " Close preview after selection
+  let g:neocomplete#enable_auto_close_preview=1
+endif
 
 "
 " Neosnippets 
