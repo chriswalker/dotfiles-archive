@@ -29,6 +29,10 @@ Plugin 'majutsushi/tagbar'
 Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'jiangmiao/auto-pairs'
+" Javascript
+Plugin 'pangloss/vim-javascript'
+Plugin 'elzr/vim-json'
+Plugin 'mxw/vim-jsx'
 
 if has('macunix')
   Plugin 'fatih/vim-go'
@@ -42,6 +46,9 @@ endif
 "vim-fugitive
 "vim-colors-solarized
 call vundle#end()
+
+" Switch filetype checking back on
+filetype plugin indent on
 
 " Set new leader
 let mapleader=","
@@ -108,8 +115,6 @@ let g:ctrlp_custom_ignore = {
 " -----------------------------------------------------------------------------
 
 if has('macunix')
-  filetype plugin indent on
-
   let g:go_highlight_functions=1  
   let g:go_highlight_methods=1  
   let g:go_highlight_structs=1  
