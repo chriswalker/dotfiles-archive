@@ -56,6 +56,7 @@ bg_green='%{$bg[green]%}'
 bg_black='%{$bg[black]%}'
 black='%{$fg[black]%}'
 white='%{$fg[white]%}'
+orange='%{$fg_bold[red]%}'
 
 reset='%{$reset_color%}'
 
@@ -66,22 +67,26 @@ cmdtime="%D{%H:%M:%S}"
 ZLE_RPROMPT_INDENT=0
 
 autoload -U colors && colors
+#
+# Commented out VCS prompt stuff for the moment
+#
 #autoload -Uz vcs_info
 
 #autoload -U promptinit && promptinit
 
 # vcs_info strings
-#zstyle ':vcs_info:*' enable git svn 
+#zstyle ':vcs_info:*' enable git
 #zstyle ':vcs_info:*' check-for-changes true
-#zstyle ':vcs_info:(git)*' formats '[g/%r-%b:%u]'
-#zstyle ':vcs_info:(svn)*' formats '[s/%r-%b]'
+#zstyle ':vcs_info:git*' stagedstr '${green}●'
+#zstyle ':vcs_info:git*' unstagedstr '${red}●'
+#zstyle ':vcs_info:git*' formats '(%b %u%c)'
 
 setopt prompt_subst
 
 # Default left prompt strings; one for insert mode for vim bindings, one for
 # Command mode
-NORMAL_PROMPT="${blue}${cmdtime} [%n@%m]${reset} %# " 
-VIM_CMD_PROMPT="${bg_blue}${black}${cmdtime} [%n@%m]${reset} %# "
+NORMAL_PROMPT="${blue}${cmdtime} [%n@%m] ${yellow}%~ "$'\n'"${orange}λ ${reset}" 
+VIM_CMD_PROMPT="${bg_blue}${black}${cmdtime} [%n@%m] %~ "$'\n'"${reset}${orange}λ ${reset}"
 
 # Set up the left-hand side prompt depending on whether we're in Vim's Command
 # mode or not
@@ -97,10 +102,6 @@ zle -N zle-keymap-select
 #  vcs_info
 #}
 
-# RPROMPT set up normally, only the left-hand-side prompt handled by the widgets above
-#RPROMPT='${green}${vcs_info_msg_0_}${reset}'
-RPROMPT="${yellow}%~${reset}"
-
 #
 # Set up various path entries
 # -----------------------------------------------------------------------------
@@ -110,7 +111,7 @@ ANDROID_SDK_PATH=~/Dev/lib/Android/android-sdk-mac_86
 export PATH=$PATH:~/bin:$ANDROID_SDK_PATH/platform-tools:$ANDROID_SDK_PATH/tools
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.6/libexec
+export GOROOT=/usr/local/Cellar/go/1.7.1/libexec
 export GOPATH=~/Dev/Projects/Go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
@@ -141,6 +142,7 @@ alias less='/usr/local/Cellar/vim/7.4.1468/share/vim/vim74/macros/less.sh $1'
 alias top='top -o cpu'
 
 # Mac-specific
+# TODO: Make mac-onlu check
 alias ql='qlmanage -p'
 alias httpconf='cd /private/etc/apache2/'
 alias o='open'
@@ -161,8 +163,8 @@ alias -s go=vim
 #
 # Misc
 # -----------------------------------------------------------------------------
-
 # NVM (for Node management)
+# TODO: Make mac-only check
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
