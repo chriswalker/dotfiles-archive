@@ -4,10 +4,10 @@
 
 " Set preferred font
 if has('win32') || has('win64')
-	set gfn=Ubuntu\ Mono:h12
+	set gfn=Hack:h12
 else
 	" On macs
-	set gfn=Ubuntu\ Mono:h15
+	set gfn=Hack:h13
 endif
 
 " Show tabs and menu, but disable everything else
