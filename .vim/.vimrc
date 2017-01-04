@@ -8,18 +8,24 @@
 "	set runtimepath=$USERPROFILE/vimfiles,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$USERPROFILE/vimfiles/after
 "endif
 
-set rtp=$HOME/dotfiles/.vim/,$VIMRUNTIME,$VIM/vimfiles/after
+set runtimepath=$HOME/dotfiles/.vim/,$VIMRUNTIME,$VIM/vimfiles/after
 
 "
 " General settings
 " -----------------------------------------------------------------------------
 set nocompatible
+set ttyfast
+set lazyredraw
+
+" Set shell as login/interactive shell is fish, which causes problems for Vim
+set shell=/bin/bash
 
 " Vundle
 filetype off " Required for Vundle init, switched back on later
-set rtp+=~/dotfiles/.vim/bundle/Vundle.vim
+set runtimepath+=~/dotfiles/.vim/bundle/Vundle.vim
 
 call vundle#begin('~/dotfiles/.vim/bundle/')
+" General plugins
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -29,23 +35,37 @@ Plugin 'majutsushi/tagbar'
 Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'jiangmiao/auto-pairs'
-" Javascript
-Plugin 'pangloss/vim-javascript'
-Plugin 'elzr/vim-json'
-Plugin 'mxw/vim-jsx'
-
+Plugin 'easymotion/vim-easymotion'
+Plugin 'wincent/terminus'
+Plugin 'dag/vim-fish'
+" Mac-only; generally Go or JS/front-end development
 if has('macunix')
+  " Dash is Mac-only
+  Plugin 'rizzatti/dash.vim'
+  " HTML
+  "Plugin 'mattn/emmet-vim'
+  " Javascript
+  "Plugin 'ternjs/tern_for_vim'
+  "Plugin 'gavocanov/vim-js-indent'
+  "Plugin 'othree/yajs.vim'
+  "Plugin 'mxw/vim-jsx'
+  " JSON
+  Plugin 'elzr/vim-json'
+  " Golang
   Plugin 'fatih/vim-go'
   " Don't have Lua compiled into Vim on non-mac machines
   Plugin 'Shougo/neocomplete.vim'
 endif
 
-" Reminder of other plugins
+" Reminder of other plugins I've used; just don't want to forget 'em
 "vim-ack
 "vim-commentary
 "vim-fugitive
 "vim-colors-solarized
 call vundle#end()
+
+" Speed up update interval 
+set updatetime=100
 
 " Switch filetype checking back on
 filetype plugin indent on
@@ -69,24 +89,75 @@ set noswapfile
 " indent by multiples of tabstop
 set shiftround
 
-nnoremap j gj
-nnoremap k gk
-xnoremap j gj
-xnoremap k gk
+" 'Print' column at 80 chars
+set colorcolumn=80
 
 " Tree-style listing in netrw
 let g:netrw_liststyle=3
 
 "
+" Key (re)mappings
+" -----------------------------------------------------------------------------
+
+" Move up/down per terminal line, not file line (for wrapped lines)
+"nnoremap j gj
+"nnoremap k gk
+"xnoremap j gj
+"xnoremap k gk
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+" Disable cursor keys in normal & insert mode
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Change window movement keys slightly
+map <C-J> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" jj to ESC back to Normal mode; quicker than reaching for ESC 
+inoremap jj <ESC>
+
+" Alt-[jk] for move current line up/down (also in visual block mode)
+nnoremap <A-j> :m+<CR>==
+nnoremap <A-k> :m-2<CR>==
+vnoremap <A-j> :m'>+<CR>gv=gv
+vnoremap <A-k> :m-2<CR>gv=gv
+
+" Alt-[hl] for indenting in and back (also in visual block mode)
+nnoremap <A-h> <<
+nnoremap <A-l> >>
+vnoremap <A-h> <gv
+vnoremap <A-l> >gv
+
+"
 " General UI settings
 " -----------------------------------------------------------------------------
 set number
+set relativenumber
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
 set laststatus=2
 set ruler
 set tabstop=2
 set shiftwidth=2
 set expandtab
 set cursorline
+
+"
+" JavaScript
+" -----------------------------------------------------------------------------
+"autocmd bufwritepost *.js silent !standard-format -w %
+"set autoread
+
+"let g:vim_json_syntax_conceal = 0
 
 "
 " Theme settings 
@@ -102,18 +173,17 @@ colorscheme base16-tomorrow
 " Bindings for main invocation & buffer mode
 nmap <leader>p :CtrlP<CR>
 nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>m :CtrlPMRU<CR>CR
+nmap <leader>m :CtrlPMRU<CR>
 
 " Customise ctrlp to ignore various directories and files
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '.git$\|node_modules',
+	\ 'dir': '\.git$\|node_modules\|dist\|bin',
 	\ 'file': '\.exe$\|\\.so$\|\.dat$'
 	\ }
 
 "
 " Vim-go 
 " -----------------------------------------------------------------------------
-
 if has('macunix')
   let g:go_highlight_functions=1  
   let g:go_highlight_methods=1  
@@ -122,6 +192,13 @@ if has('macunix')
   let g:go_highlight_interfaces=1
   let g:go_highlight_build_constraints=1
   let g:go_fmt_command="goimports"
+  let g:go_auto_sameids=1
+  let g:go_metalinter_autosave=1
+  let g:go_auto_type_info=1
+  let g:go_snippet_engine='neosnippet'
+  let g:go_list_height=10
+  "let g:go_list_type="quickfix"
+  "let g:go_fmt_fail_silently=1
 endif
 
 "
@@ -141,9 +218,11 @@ set noshowmode
 " Tagbar
 " -----------------------------------------------------------------------------
 
+nmap <leader>t :TagbarToggle<CR>
+
 " General UI config
 let g:tagbar_left=1
-let g:tagbar_width=30
+let g:tagbar_width=40
 
 if has('macunix')
   " Configuration for Golang, using gotags
@@ -174,10 +253,15 @@ if has('macunix')
       \ 'ctagsbin'  : 'gotags',
       \ 'ctagsargs' : '-sort -silent'
   \ }
+
+  " JS picked up automatically by tagbar, using jsctags
 endif
 
 autocmd VimEnter * nested :call tagbar#autoopen(1)
-autocmd FileType * nested :call tagbar#autoopen(0)
+" Commented out for the moment; upgrading to latest tagbar seems to
+" cause problems with 'E218 autocommand nesting too deep error' being
+" displayed
+"autocmd FileType * nested :call tagbar#autoopen(0)
 
 " Show/hide tagbar with Ctrl-]
 "noremap <leader>] :TagbarToggle<CR>
@@ -189,8 +273,7 @@ if has('macunix')
   let g:neocomplete#enable_at_startup=1
   " Close preview after selection
   let g:neocomplete#enable_auto_close_preview=1
-endif
-
+endif 
 "
 " Neosnippets 
 " -----------------------------------------------------------------------------
@@ -199,3 +282,41 @@ endif
 imap <Tab> <Plug>(neosnippet_expand_or_jump)
 smap <Tab> <Plug>(neosnippet_expand_or_jump)
 xmap <Tab> <Plug>(neosnippet_expand_target)
+
+"
+" Syntastic
+" -----------------------------------------------------------------------------
+" Below not needed if using vim-airline, as it uses syntastic_stl_format by
+" default
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=0
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=1
+let g:syntastic_aggregate_errors=1
+let g:syntastic_enable_signs = 1
+
+let g:syntastic_go_checkers=['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+" Add Standard JS checking
+"let g:syntastic_javascript_checkers=['standard']
+
+"
+" vim-jsx
+" -----------------------------------------------------------------------------
+" let g:jsx_ext_required = 0
+
+"
+" Dash.vim
+" -----------------------------------------------------------------------------
+let g:dash_activate = 0
+
+"
+" vim-easymotion
+" -----------------------------------------------------------------------------
+" Map bi-di highlighting to s
+nmap s <Plug>(easymotion-s2)
