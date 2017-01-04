@@ -24,9 +24,6 @@ set -g GOPATH ~/Dev/Projects/Go
 # Update path
 set PATH $GOROOT/bin $GOPATH/bin $PATH
 
-
-# Update path
-
 #
 # Aliases
 # -----------------------------------------------------------------------------
