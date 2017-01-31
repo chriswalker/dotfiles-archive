@@ -40,14 +40,12 @@ Plugin 'wincent/terminus'
 Plugin 'dag/vim-fish'
 " Mac-only; generally Go or JS/front-end development
 if has('macunix')
-  " Dash is Mac-only
-  Plugin 'rizzatti/dash.vim'
   " HTML
-  "Plugin 'mattn/emmet-vim'
+  Plugin 'mattn/emmet-vim'
   " Javascript
-  "Plugin 'ternjs/tern_for_vim'
-  "Plugin 'gavocanov/vim-js-indent'
-  "Plugin 'othree/yajs.vim'
+  Plugin 'ternjs/tern_for_vim'
+  Plugin 'gavocanov/vim-js-indent'
+  Plugin 'othree/yajs.vim'
   "Plugin 'mxw/vim-jsx'
   " JSON
   Plugin 'elzr/vim-json'
@@ -303,17 +301,7 @@ let g:syntastic_go_checkers=['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Add Standard JS checking
-"let g:syntastic_javascript_checkers=['standard']
-
-"
-" vim-jsx
-" -----------------------------------------------------------------------------
-" let g:jsx_ext_required = 0
-
-"
-" Dash.vim
-" -----------------------------------------------------------------------------
-let g:dash_activate = 0
+let g:syntastic_javascript_checkers=['standard']
 
 "
 " vim-easymotion
