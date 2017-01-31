@@ -20,7 +20,7 @@ set fish_key_bindings fish_vi_key_bindings
 # -----------------------------------------------------------------------------
 
 set -g GOROOT /usr/local/Cellar/go/1.7.1/libexec
-set -g GOPATH ~/Dev/Projects/Go
+set -x GOPATH ~/Dev/Projects/Go
 # Update path
 set PATH $GOROOT/bin $GOPATH/bin $PATH
 
