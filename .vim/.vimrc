@@ -16,6 +16,8 @@ set runtimepath=$HOME/dotfiles/.vim/,$VIMRUNTIME,$VIM/vimfiles/after
 set nocompatible
 set ttyfast
 set lazyredraw
+" Write files on make/GoBuild etc
+set autowrite
 
 " Set shell as login/interactive shell is fish, which causes problems for Vim
 set shell=/bin/bash
@@ -98,10 +100,6 @@ let g:netrw_liststyle=3
 " -----------------------------------------------------------------------------
 
 " Move up/down per terminal line, not file line (for wrapped lines)
-"nnoremap j gj
-"nnoremap k gk
-"xnoremap j gj
-"xnoremap k gk
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 " Disable cursor keys in normal & insert mode
@@ -197,6 +195,13 @@ if has('macunix')
   let g:go_list_height=10
   "let g:go_list_type="quickfix"
   "let g:go_fmt_fail_silently=1
+
+  " Map <leader>t to GoTest
+  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+  " Map <leader>c to GoCoverageToggle
+  autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
+  " Map <leader>a to GoAlternate
+  autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 endif
 
 "
@@ -256,13 +261,7 @@ if has('macunix')
 endif
 
 autocmd VimEnter * nested :call tagbar#autoopen(1)
-" Commented out for the moment; upgrading to latest tagbar seems to
-" cause problems with 'E218 autocommand nesting too deep error' being
-" displayed
-"autocmd FileType * nested :call tagbar#autoopen(0)
-
-" Show/hide tagbar with Ctrl-]
-"noremap <leader>] :TagbarToggle<CR>
+autocmd FileType * nested :call tagbar#autoopen(0)
 
 "
 " Neocomplete
