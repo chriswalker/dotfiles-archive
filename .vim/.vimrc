@@ -22,62 +22,52 @@ set autowrite
 " Set shell as login/interactive shell is fish, which causes problems for Vim
 set shell=/bin/bash
 
-" Vundle
-filetype off " Required for Vundle init, switched back on later
-set runtimepath+=~/dotfiles/.vim/bundle/Vundle.vim
-
-call vundle#begin('~/dotfiles/.vim/bundle/')
-" General plugins
-Plugin 'scrooloose/syntastic'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'majutsushi/tagbar'
-Plugin 'chriskempson/base16-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'wincent/terminus'
-Plugin 'dag/vim-fish'
+" vim-plug - handle required plugins
+call plug#begin('~/dotfiles/.vim/plugins')
+Plug 'scrooloose/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'majutsushi/tagbar'
+Plug 'chriskempson/base16-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'easymotion/vim-easymotion'
+Plug 'wincent/terminus'
+Plug 'dag/vim-fish'
+Plug 'ekalinin/Dockerfile.vim'
 " Mac-only; generally Go or JS/front-end development
 if has('macunix')
   " HTML
-  Plugin 'mattn/emmet-vim'
+  Plug 'mattn/emmet-vim'
   " Javascript
-  Plugin 'ternjs/tern_for_vim'
-  Plugin 'gavocanov/vim-js-indent'
-  Plugin 'othree/yajs.vim'
+  Plug 'ternjs/tern_for_vim'
+  Plug 'gavocanov/vim-js-indent'
+  Plug 'othree/yajs.vim'
   "Plugin 'mxw/vim-jsx'
   " JSON
-  Plugin 'elzr/vim-json'
+  Plug 'elzr/vim-json'
   " Golang
-  Plugin 'fatih/vim-go'
+  Plug 'fatih/vim-go'
   " Don't have Lua compiled into Vim on non-mac machines
-  Plugin 'Shougo/neocomplete.vim'
+  Plug 'Shougo/neocomplete.vim'
 endif
-
 " Reminder of other plugins I've used; just don't want to forget 'em
 "vim-ack
 "vim-commentary
 "vim-fugitive
 "vim-colors-solarized
-call vundle#end()
+call plug#end()
 
 " Speed up update interval 
 set updatetime=100
-
-" Switch filetype checking back on
-filetype plugin indent on
 
 " Set new leader
 let mapleader=","
 
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-" Syntax highlighting
-syntax enable
 
 " Highlight searches & set incremental searching 
 set hlsearch incsearch 
@@ -150,8 +140,8 @@ set cursorline
 "
 " JavaScript
 " -----------------------------------------------------------------------------
-"autocmd bufwritepost *.js silent !standard-format -w %
-"set autoread
+autocmd bufwritepost *.js silent !standard --fix %
+set autoread
 
 "let g:vim_json_syntax_conceal = 0
 

@@ -1,6 +1,7 @@
 *.bak
 *.log
 .vim/.netrwhist
-.vim/bundle
+.vim/plugins
+.vim/autoload
 .zsh/work.zsh
 fish/fishd.*
