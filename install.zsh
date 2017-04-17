@@ -6,5 +6,7 @@ ln -fs ~/dotfiles/.ackrc ~
 ln -fs ~/dotfiles/.vim/.vimrc ~
 #ln -fs ~/dotfiles/.bashrc ~
 
-rm -rf ~/.config/fish
+rm -rf ~/.config/fish ~/.config/nvim
+
 ln -fs ~/dotfiles/fish ~/.config/fish
+ln -fs ~/dotfile/nvim ~/.config/nvim
