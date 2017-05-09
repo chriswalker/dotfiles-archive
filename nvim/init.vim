@@ -2,14 +2,6 @@
 " Standard Vim settings
 " -----------------------------------------------------------------------------
 
-" Set runtime path on Windows installs; saves having to change .vimrc/.gvimrc
-" filenames to Windows gVim defaults 
-"if has('win32') || has('win64')
-"	set runtimepath=$USERPROFILE/vimfiles,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$USERPROFILE/vimfiles/after
-"endif
-
-"set runtimepath=$HOME/dotfiles/.vim/,$VIMRUNTIME,$VIM/vimfiles/after
-
 "
 " General settings
 " -----------------------------------------------------------------------------
@@ -22,9 +14,13 @@ set autowrite
 " Set shell as login/interactive shell is fish, which causes problems for Vim
 set shell=/bin/bash
 
+" Accept ^? as backspace char (allows remapping of C-h for moving to a left
+" split) - NOTE: Must set up terminal emulator to emit ^? when backspace is
+" pressed
+set t_kb=
+
 " vim-plug - handle required plugins
 call plug#begin('~/.config/nvim/plugged')
-"Plug 'scrooloose/syntastic'
 Plug 'neomake/neomake'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -33,35 +29,35 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'majutsushi/tagbar'
 Plug 'chriskempson/base16-vim'
-"Plug 'ctrlpvim/ctrlp.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+" Experimental, may switch to fzf
+"Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'easymotion/vim-easymotion'
 Plug 'wincent/terminus'
 Plug 'dag/vim-fish'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'fatih/vim-go'
+Plug 'elzr/vim-json'
+
 " Mac-only; generally Go or JS/front-end development
-if has('macunix')
+"if has('macunix')
   " HTML
-  Plug 'mattn/emmet-vim'
+  "Plug 'mattn/emmet-vim'
   " Javascript
-  Plug 'ternjs/tern_for_vim'
-  Plug 'gavocanov/vim-js-indent'
-  Plug 'othree/yajs.vim'
+  "Plug 'ternjs/tern_for_vim'
+  "Plug 'gavocanov/vim-js-indent'
+  "Plug 'othree/yajs.vim'
   "Plugin 'mxw/vim-jsx'
   " JSON
-  Plug 'elzr/vim-json'
-  " Golang
-  Plug 'fatih/vim-go'
-  " Don't have Lua compiled into Vim on non-mac machines
-"  Plug 'Shougo/neocomplete.vim'
-endif
+"endif
+
 " Reminder of other plugins I've used; just don't want to forget 'em
-"vim-ack
-"vim-commentary
-"vim-fugitive
-"vim-colors-solarized
+"   vim-ack
+"   vim-commentary
+"   vim-easymotion
+"   vim-fugitive
+"   vim-colors-solarized
 call plug#end()
 
 " Speed up update interval 
@@ -107,10 +103,13 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 
 " Change window movement keys slightly
-map <C-J> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <C-H> <C-W><C-H>
+map <C-J> <C-W><C-J>
+map <C-K> <C-W><C-K>
+map <C-L> <C-W><C-L>
+
+set splitbelow
+set splitright
 
 " jj to ESC back to Normal mode; quicker than reaching for ESC 
 inoremap jj <ESC>
@@ -159,23 +158,22 @@ set autoread
 " Theme settings 
 " -----------------------------------------------------------------------------
 set background=dark
-"colorscheme solarized
-colorscheme base16-tomorrow
+colorscheme base16-default-dark
 
 "
 " CtrlP
 " -----------------------------------------------------------------------------
 
 " Bindings for main invocation & buffer mode
-"nmap <leader>p :CtrlP<CR>
-"nmap <leader>b :CtrlPBuffer<CR>
-"nmap <leader>m :CtrlPMRU<CR>
+nmap <leader>p :CtrlP<CR>
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>m :CtrlPMRU<CR>
 
 " Customise ctrlp to ignore various directories and files
-"let g:ctrlp_custom_ignore = {
-"	\ 'dir': '\.git$\|node_modules\|dist\|bin',
-"	\ 'file': '\.exe$\|\\.so$\|\.dat$'
-"	\ }
+let g:ctrlp_custom_ignore = {
+	\ 'dir': '\.git$\|node_modules\|dist\|bin',
+	\ 'file': '\.exe$\|\\.so$\|\.dat$'
+	\ }
 
 "
 " Vim-go 
@@ -221,7 +219,7 @@ set noshowmode
 " Tagbar
 " -----------------------------------------------------------------------------
 
-nmap <leader>t :TagbarToggle<CR>
+nmap <leader>b :TagbarToggle<CR>
 
 " General UI config
 let g:tagbar_left=1
@@ -260,17 +258,23 @@ if has('macunix')
   " JS picked up automatically by tagbar, using jsctags
 endif
 
-autocmd VimEnter * nested :call tagbar#autoopen(1)
-autocmd FileType * nested :call tagbar#autoopen(0)
+"autocmd VimEnter * nested :call tagbar#autoopen(1)
+"autocmd FileType * nested :call tagbar#autoopen(0)
 
 "
 " Neocomplete
 " -----------------------------------------------------------------------------
-if has('macunix')
-  let g:neocomplete#enable_at_startup=1
+"if has('macunix')
+"  let g:neocomplete#enable_at_startup=1
   " Close preview after selection
-  let g:neocomplete#enable_auto_close_preview=1
-endif 
+"  let g:neocomplete#enable_auto_close_preview=1
+"endif 
+
+"
+" Deoplete
+" -----------------------------------------------------------------------------
+let g:deoplete#enable_at_startup = 1
+
 "
 " Neosnippets 
 " -----------------------------------------------------------------------------
