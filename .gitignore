@@ -3,5 +3,7 @@
 .vim/.netrwhist
 .vim/plugins
 .vim/autoload
+nvim/plugged
+nvim/autoload
 .zsh/work.zsh
 fish/fishd.*
