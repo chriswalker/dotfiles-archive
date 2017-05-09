@@ -19,10 +19,19 @@ set fish_key_bindings fish_vi_key_bindings
 # Set up various path entries
 # -----------------------------------------------------------------------------
 
+# Golang
 set -g GOROOT /usr/local/Cellar/go/1.8/libexec
 set -x GOPATH ~/Dev/Projects/Go
+
+# Java
+set -g JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home 
+set -g JDK_HOME $JAVA_HOME
+
+# Data directory for docker volume mounts etc
+set -g DATA_HOME ~/Dev/data
+
 # Update path
-set PATH $GOROOT/bin $GOPATH/bin $PATH
+set PATH $GOROOT/bin $GOPATH/bin ~/bin $PATH
 
 #
 # Aliases
