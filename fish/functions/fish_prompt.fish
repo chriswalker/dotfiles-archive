@@ -73,12 +73,12 @@ function fish_prompt --description 'Write out the prompt with colours based on b
     set -g time (date "+%H:%M:%S")
 
     # Time/user/hostname
-    printf '%s[%s] %s@%s ' $blue $time $USER $__fish_prompt_hostname
+    printf '%s[%s] ' $blue $time 
     # pwd
     printf '%s%s%s' $yellow (prompt_pwd) $normal
     # VCS
     printf '%s%s\n' (__fish_vcs_prompt)
     # Second line
     printf $bold_orange
-    printf 'λ '
+    printf '> '
 end
