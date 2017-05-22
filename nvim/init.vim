@@ -30,6 +30,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'majutsushi/tagbar'
 Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
 " Experimental, may switch to fzf
 "Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
 "Plug 'junegunn/fzf.vim'
@@ -39,19 +40,8 @@ Plug 'dag/vim-fish'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go'
 Plug 'elzr/vim-json'
-
-" Mac-only; generally Go or JS/front-end development
-"if has('macunix')
-  " HTML
-  "Plug 'mattn/emmet-vim'
-  " Javascript
-  "Plug 'ternjs/tern_for_vim'
-  "Plug 'gavocanov/vim-js-indent'
-  "Plug 'othree/yajs.vim'
-  "Plugin 'mxw/vim-jsx'
-  " JSON
-"endif
-
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'airblade/vim-gitgutter'
 " Reminder of other plugins I've used; just don't want to forget 'em
 "   vim-ack
 "   vim-commentary
@@ -140,6 +130,21 @@ set shiftwidth=2
 set expandtab
 set cursorline
 
+" Statusline formatting experiments
+"set statusline=
+"set statusline+=%#PmenuSel#
+"set statusline+=\ %{fugitive#head()}\  
+"set statusline+=%#LineNr#
+"set statusline+=\ %f
+"set statusline+=%m\
+"set statusline+=%=
+"set statusline+=%#CursorColumn#
+"set statusline+=\ %y
+"set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+"set statusline+=\[%{&fileformat}\]
+"set statusline+=\ %p%%
+"set statusline+=\ %l:%c
+"set statusline+=\
 "
 " Markdown
 " -----------------------------------------------------------------------------
