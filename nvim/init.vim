@@ -183,29 +183,27 @@ let g:ctrlp_custom_ignore = {
 "
 " Vim-go 
 " -----------------------------------------------------------------------------
-if has('macunix')
-  let g:go_highlight_functions=1  
-  let g:go_highlight_methods=1  
-  let g:go_highlight_structs=1  
-  let g:go_highlight_operators=1
-  let g:go_highlight_interfaces=1
-  let g:go_highlight_build_constraints=1
-  let g:go_fmt_command="goimports"
-  let g:go_auto_sameids=1
-  let g:go_metalinter_autosave=1
-  let g:go_auto_type_info=1
-  let g:go_snippet_engine='neosnippet'
-  let g:go_list_height=10
-  "let g:go_list_type="quickfix"
-  "let g:go_fmt_fail_silently=1
+let g:go_highlight_functions=1  
+let g:go_highlight_methods=1  
+let g:go_highlight_structs=1  
+let g:go_highlight_operators=1
+let g:go_highlight_interfaces=1
+let g:go_highlight_build_constraints=1
+let g:go_fmt_command="goimports"
+let g:go_auto_sameids=1
+let g:go_metalinter_autosave=1
+let g:go_auto_type_info=1
+let g:go_snippet_engine='neosnippet'
+let g:go_list_height=10
+"let g:go_list_type="quickfix"
+"let g:go_fmt_fail_silently=1
 
-  " Map <leader>t to GoTest
-  autocmd FileType go nmap <leader>t  <Plug>(go-test)
-  " Map <leader>c to GoCoverageToggle
-  autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
-  " Map <leader>a to GoAlternate
-  autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
-endif
+" Map <leader>t to GoTest
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+" Map <leader>c to GoCoverageToggle
+autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
+" Map <leader>a to GoAlternate
+autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 
 "
 " Vim-airline (Powerline equivalent, non-Python)
