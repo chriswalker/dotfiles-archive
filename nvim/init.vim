@@ -28,7 +28,8 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'majutsushi/tagbar'
-Plug 'chriskempson/base16-vim'
+"Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 " Experimental, may switch to fzf
@@ -163,7 +164,10 @@ set autoread
 " Theme settings 
 " -----------------------------------------------------------------------------
 set background=dark
-colorscheme base16-default-dark
+"colorscheme base16-eighties
+let g:gruvbox_italic=1
+let g:gruvbox_italicize_comments=1
+colorscheme gruvbox
 
 "
 " CtrlP
@@ -189,7 +193,7 @@ let g:go_highlight_structs=1
 let g:go_highlight_operators=1
 let g:go_highlight_interfaces=1
 let g:go_highlight_build_constraints=1
-let g:go_fmt_command="goimports"
+let g:go_fmt_command="goreturns"
 let g:go_auto_sameids=1
 let g:go_metalinter_autosave=1
 let g:go_auto_type_info=1
@@ -209,7 +213,8 @@ autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 " Vim-airline (Powerline equivalent, non-Python)
 " -----------------------------------------------------------------------------
 
-let g:airline_theme='base16'
+"let g:airline_theme='base16'
+let g:airline_theme='gruvbox'
 
 " Remove default seperators
 let g:airline_left_sep=''
