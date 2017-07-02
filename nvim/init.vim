@@ -21,33 +21,36 @@ set t_kb=
 
 " vim-plug - handle required plugins
 call plug#begin('~/.config/nvim/plugged')
-Plug 'neomake/neomake'
+" Ui & theming
+"Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Development
+Plug 'airblade/vim-gitgutter'
+Plug 'fatih/vim-go'
+Plug 'elzr/vim-json'
+Plug 'tpope/vim-fugitive'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'majutsushi/tagbar'
+" Misc
+Plug 'neomake/neomake'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'majutsushi/tagbar'
-"Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
+Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
 " Experimental, may switch to fzf
 "Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
 "Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'wincent/terminus'
 Plug 'dag/vim-fish'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'fatih/vim-go'
-Plug 'elzr/vim-json'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'airblade/vim-gitgutter'
 " Reminder of other plugins I've used; just don't want to forget 'em
 "   vim-ack
 "   vim-commentary
 "   vim-easymotion
-"   vim-fugitive
 "   vim-colors-solarized
 call plug#end()
 
@@ -146,19 +149,12 @@ set cursorline
 "set statusline+=\ %p%%
 "set statusline+=\ %l:%c
 "set statusline+=\
+
 "
 " Markdown
 " -----------------------------------------------------------------------------
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['html', 'javascript', 'go', 'bash=sh']
-
-"
-" JavaScript
-" -----------------------------------------------------------------------------
-autocmd bufwritepost *.js silent !standard --fix %
-set autoread
-
-"let g:vim_json_syntax_conceal = 0
 
 "
 " Theme settings 
@@ -167,7 +163,9 @@ set background=dark
 "colorscheme base16-eighties
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=1
+"let g:gruvbox_contrast_dark='soft'
 colorscheme gruvbox
+highlight Comment cterm=italic
 
 "
 " CtrlP
@@ -180,7 +178,7 @@ nmap <leader>m :CtrlPMRU<CR>
 
 " Customise ctrlp to ignore various directories and files
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git$\|node_modules\|dist\|bin',
+	\ 'dir': '\.git$\|node_modules\|dist\|bin\|vendor',
 	\ 'file': '\.exe$\|\\.so$\|\.dat$'
 	\ }
 
