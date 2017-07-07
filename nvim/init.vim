@@ -41,8 +41,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 " Experimental, may switch to fzf
-"Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'wincent/terminus'
 Plug 'dag/vim-fish'
@@ -133,6 +133,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set cursorline
+set fillchars+=vert:\ 
 
 " Statusline formatting experiments
 "set statusline=
@@ -229,7 +230,7 @@ nmap <leader>b :TagbarToggle<CR>
 
 " General UI config
 let g:tagbar_left=1
-let g:tagbar_width=40
+let g:tagbar_width=35
 
 if has('macunix')
   " Configuration for Golang, using gotags
@@ -264,8 +265,8 @@ if has('macunix')
   " JS picked up automatically by tagbar, using jsctags
 endif
 
-"autocmd VimEnter * nested :call tagbar#autoopen(1)
-"autocmd FileType * nested :call tagbar#autoopen(0)
+autocmd VimEnter * nested :call tagbar#autoopen(1)
+autocmd FileType * nested :call tagbar#autoopen(0)
 
 "
 " Neocomplete
