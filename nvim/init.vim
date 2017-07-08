@@ -232,50 +232,37 @@ nmap <leader>b :TagbarToggle<CR>
 let g:tagbar_left=1
 let g:tagbar_width=35
 
-if has('macunix')
-  " Configuration for Golang, using gotags
-  let g:tagbar_type_go = {
-      \ 'ctagstype' : 'go',
-      \ 'kinds'     : [
-          \ 'p:package',
-          \ 'i:imports:1',
-          \ 'c:constants',
-          \ 'v:variables',
-          \ 't:types',
-          \ 'n:interfaces',
-          \ 'w:fields',
-          \ 'e:embedded',
-          \ 'm:methods',
-          \ 'r:constructor',
-          \ 'f:functions'
-      \ ],
-      \ 'sro' : '.',
-      \ 'kind2scope' : {
-          \ 't' : 'ctype',
-          \ 'n' : 'ntype'
-      \ },
-      \ 'scope2kind' : {
-          \ 'ctype' : 't',
-          \ 'ntype' : 'n'
-      \ },
-      \ 'ctagsbin'  : 'gotags',
-      \ 'ctagsargs' : '-sort -silent'
-  \ }
-
-  " JS picked up automatically by tagbar, using jsctags
-endif
+" Configuration for Golang, using gotags
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 autocmd VimEnter * nested :call tagbar#autoopen(1)
 autocmd FileType * nested :call tagbar#autoopen(0)
-
-"
-" Neocomplete
-" -----------------------------------------------------------------------------
-"if has('macunix')
-"  let g:neocomplete#enable_at_startup=1
-  " Close preview after selection
-"  let g:neocomplete#enable_auto_close_preview=1
-"endif 
 
 "
 " Deoplete
@@ -292,38 +279,10 @@ smap <Tab> <Plug>(neosnippet_expand_or_jump)
 xmap <Tab> <Plug>(neosnippet_expand_target)
 
 "
-" Syntastic
-" -----------------------------------------------------------------------------
-" Below not needed if using vim-airline, as it uses syntastic_stl_format by
-" default
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list=1
-"let g:syntastic_auto_loc_list=0
-"let g:syntastic_check_on_open=1
-"let g:syntastic_check_on_wq=1
-"let g:syntastic_aggregate_errors=1
-"let g:syntastic_enable_signs = 1
-
-"let g:syntastic_go_checkers=['golint', 'govet', 'errcheck']
-"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
-" Add Standard JS checking
-"let g:syntastic_javascript_checkers=['standard']
-
-"
 " Neomake
 " -----------------------------------------------------------------------------
 " Run neomake on buffer save - TODO: Tweak, don't need on *every* filetype
 autocmd! BufWritePost * Neomake
-
-"
-" vim-easymotion
-" -----------------------------------------------------------------------------
-" Map bi-di highlighting to s
-nmap s <Plug>(easymotion-s2)
 
 "
 " fzf-vim
