@@ -34,10 +34,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'majutsushi/tagbar'
 " Misc
-Plug 'neomake/neomake'
+"Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-go', { 'do': 'make' }
 Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 " Experimental, may switch to fzf
@@ -270,6 +272,11 @@ autocmd FileType * nested :call tagbar#autoopen(0)
 let g:deoplete#enable_at_startup = 1
 
 "
+" Deoplete-go
+" -----------------------------------------------------------------------------
+let g:deoplete#sources#go#gocode_binary=$GOPATH.'/bin/gocode'
+
+"
 " Neosnippets 
 " -----------------------------------------------------------------------------
 
@@ -282,7 +289,17 @@ xmap <Tab> <Plug>(neosnippet_expand_target)
 " Neomake
 " -----------------------------------------------------------------------------
 " Run neomake on buffer save - TODO: Tweak, don't need on *every* filetype
-autocmd! BufWritePost * Neomake
+"autocmd! BufWritePost * Neomake
+
+"
+" ale
+" -----------------------------------------------------------------------------
+" Error and warning signs.
+"let g:ale_sign_error = 'X'
+"let g:ale_sign_warning = '!'
+
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
 
 "
 " fzf-vim
