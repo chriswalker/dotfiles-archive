@@ -46,7 +46,7 @@ switch (uname)
 case Linux
   ~/dotfiles/nvim/plugged/gruvbox/gruvbox_256palette.sh
 case Darwin
-  ~dotfiles/nvim/plugged/gruvbox/gruvbox_256palette_osx.sh
+  ~/dotfiles/nvim/plugged/gruvbox/gruvbox_256palette_osx.sh
 end
 
 #
