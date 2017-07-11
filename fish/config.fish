@@ -20,7 +20,13 @@ set fish_key_bindings fish_vi_key_bindings
 # -----------------------------------------------------------------------------
 
 # Golang
-set -g GOROOT /usr/local/Cellar/go/1.8/libexec
+switch (uname)
+case Linux
+  set -g GOROOT /usr/local/go
+case Darwin
+  set -g GOROOT /usr/local/Cellar/go/1.8/libexec
+end
+
 set -x GOPATH ~/Dev/Projects/Go
 
 # Java
@@ -32,6 +38,16 @@ set -g DATA_HOME ~/Dev/data
 
 # Update path
 set PATH $GOROOT/bin $GOPATH/bin ~/bin $PATH
+
+#
+# UI tweaks
+# -----------------------------------------------------------------------------
+switch (uname)
+case Linux
+  ~/dotfiles/nvim/plugged/gruvbox/gruvbox_256palette.sh
+case Darwin
+  ~dotfiles/nvim/plugged/gruvbox/gruvbox_256palette_osx.sh
+end
 
 #
 # Aliases
