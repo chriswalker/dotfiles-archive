@@ -41,7 +41,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make' }
 Plug 'ervandew/supertab'
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 " Experimental, may switch to fzf
 Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -175,9 +175,9 @@ highlight Comment cterm=italic
 " -----------------------------------------------------------------------------
 
 " Bindings for main invocation & buffer mode
-nmap <leader>p :CtrlP<CR>
-nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>m :CtrlPMRU<CR>
+"nmap <leader>p :CtrlP<CR>
+"nmap <leader>b :CtrlPBuffer<CR>
+"nmap <leader>m :CtrlPMRU<CR>
 
 " Customise ctrlp to ignore various directories and files
 let g:ctrlp_custom_ignore = {
@@ -228,7 +228,7 @@ set noshowmode
 " Tagbar
 " -----------------------------------------------------------------------------
 
-nmap <leader>b :TagbarToggle<CR>
+"nmap <leader>b :TagbarToggle<CR>
 
 " General UI config
 let g:tagbar_left=1
@@ -305,15 +305,23 @@ let g:airline#extensions#ale#enabled = 1
 " fzf-vim
 " -----------------------------------------------------------------------------
 " Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
+"nmap <leader><tab> <plug>(fzf-maps-n)
+"xmap <leader><tab> <plug>(fzf-maps-x)
+"omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+"imap <c-x><c-k> <plug>(fzf-complete-word)
+"imap <c-x><c-f> <plug>(fzf-complete-path)
+"imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+"imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+"inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+imap <c-x><c-o> <plug>(fzf-complete-line)
+"map <leader>b :Buffers<cr>
+map <leader>f :Files<cr>
+map <leader>g :GFiles<cr>
+map <leader>s :Tags<cr>
+
+let g:fzf_layout = { 'down': '~20%' }
