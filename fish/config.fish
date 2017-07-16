@@ -37,17 +37,17 @@ set -g JDK_HOME $JAVA_HOME
 set -g DATA_HOME ~/Dev/data
 
 # Update path
-set PATH $GOROOT/bin $GOPATH/bin ~/bin $PATH
+set PATH $GOROOT/bin $GOPATH/bin ~/bin ~/Dev/Work/google-cloud-sdk/bin $PATH
 
 #
 # UI tweaks
 # -----------------------------------------------------------------------------
-switch (uname)
-case Linux
-  ~/dotfiles/nvim/plugged/gruvbox/gruvbox_256palette.sh
-case Darwin
-  ~/dotfiles/nvim/plugged/gruvbox/gruvbox_256palette_osx.sh
-end
+#switch (uname)
+#case Linux
+#  ~/dotfiles/nvim/plugged/gruvbox/gruvbox_256palette.sh
+#case Darwin
+#  ~/dotfiles/nvim/plugged/gruvbox/gruvbox_256palette_osx.sh
+#end
 
 #
 # Aliases

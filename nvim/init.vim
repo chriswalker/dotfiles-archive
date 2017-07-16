@@ -22,8 +22,7 @@ set t_kb=
 " vim-plug - handle required plugins
 call plug#begin('~/.config/nvim/plugged')
 " Ui & theming
-"Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
+Plug 'KeitaNakamura/neodark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Development
@@ -34,22 +33,22 @@ Plug 'tpope/vim-fugitive'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'majutsushi/tagbar'
 " Misc
-"Plug 'neomake/neomake'
 Plug 'w0rp/ale'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make' }
 Plug 'ervandew/supertab'
-Plug 'ctrlpvim/ctrlp.vim'
-" Experimental, may switch to fzf
 Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'wincent/terminus'
+"Plug 'wincent/terminus'
 Plug 'dag/vim-fish'
 Plug 'christoomey/vim-tmux-navigator'
 " Reminder of other plugins I've used; just don't want to forget 'em
+" 'chriskempson/base16-vim'
+" 'morhetz/gruvbox'
+" 'altercation/vim-colors-solarized'
 "   vim-ack
 "   vim-commentary
 "   vim-easymotion
@@ -103,6 +102,10 @@ map <C-H> <C-W><C-H>
 map <C-J> <C-W><C-J>
 map <C-K> <C-W><C-K>
 map <C-L> <C-W><C-L>
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
 
 set splitbelow
 set splitright
@@ -137,22 +140,6 @@ set expandtab
 set cursorline
 set fillchars+=vert:\ 
 
-" Statusline formatting experiments
-"set statusline=
-"set statusline+=%#PmenuSel#
-"set statusline+=\ %{fugitive#head()}\  
-"set statusline+=%#LineNr#
-"set statusline+=\ %f
-"set statusline+=%m\
-"set statusline+=%=
-"set statusline+=%#CursorColumn#
-"set statusline+=\ %y
-"set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-"set statusline+=\[%{&fileformat}\]
-"set statusline+=\ %p%%
-"set statusline+=\ %l:%c
-"set statusline+=\
-
 "
 " Markdown
 " -----------------------------------------------------------------------------
@@ -163,27 +150,10 @@ let g:markdown_fenced_languages = ['html', 'javascript', 'go', 'bash=sh']
 " Theme settings 
 " -----------------------------------------------------------------------------
 set background=dark
-"colorscheme base16-eighties
-let g:gruvbox_italic=1
-let g:gruvbox_italicize_comments=1
-"let g:gruvbox_contrast_dark='soft'
-colorscheme gruvbox
+let g:neodark#use_custom_terminal_theme = 1
+let g:neodark#solid_vertsplit = 1
+colorscheme neodark
 highlight Comment cterm=italic
-
-"
-" CtrlP
-" -----------------------------------------------------------------------------
-
-" Bindings for main invocation & buffer mode
-nmap <leader>p :CtrlP<CR>
-nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader>m :CtrlPMRU<CR>
-
-" Customise ctrlp to ignore various directories and files
-let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git$\|node_modules\|dist\|bin\|vendor',
-	\ 'file': '\.exe$\|\\.so$\|\.dat$'
-	\ }
 
 "
 " Vim-go 
@@ -214,8 +184,7 @@ autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 " Vim-airline (Powerline equivalent, non-Python)
 " -----------------------------------------------------------------------------
 
-"let g:airline_theme='base16'
-let g:airline_theme='gruvbox'
+let g:airline_theme='neodark'
 
 " Remove default seperators
 let g:airline_left_sep=''
@@ -286,12 +255,6 @@ smap <Tab> <Plug>(neosnippet_expand_or_jump)
 xmap <Tab> <Plug>(neosnippet_expand_target)
 
 "
-" Neomake
-" -----------------------------------------------------------------------------
-" Run neomake on buffer save - TODO: Tweak, don't need on *every* filetype
-"autocmd! BufWritePost * Neomake
-
-"
 " ale
 " -----------------------------------------------------------------------------
 " Error and warning signs.
@@ -304,16 +267,8 @@ let g:airline#extensions#ale#enabled = 1
 "
 " fzf-vim
 " -----------------------------------------------------------------------------
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+imap <c-x><c-o> <plug>(fzf-complete-line)
+map <leader>b :Buffers<cr>
+map <leader>f :Files<cr>
+map <leader>g :GFiles<cr>
+"map <leader>t :Tags<cr>
