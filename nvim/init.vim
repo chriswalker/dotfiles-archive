@@ -197,7 +197,7 @@ set noshowmode
 " Tagbar
 " -----------------------------------------------------------------------------
 
-nmap <leader>b :TagbarToggle<CR>
+"nmap <leader>b :TagbarToggle<CR>
 
 " General UI config
 let g:tagbar_left=1
@@ -272,3 +272,5 @@ map <leader>b :Buffers<cr>
 map <leader>f :Files<cr>
 map <leader>g :GFiles<cr>
 "map <leader>t :Tags<cr>
+
+let g:fzf_layout = { 'down': '~20%' }
