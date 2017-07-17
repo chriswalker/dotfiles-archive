@@ -61,6 +61,7 @@ alias grep "grep --color=auto"
 alias less "/usr/local/Cellar/vim/7.4.1468/share/vim/vim74/macros/less.sh $1"
 # Top display in CPU decending order
 alias top "top -o cpu"
+alias k "kubectl"
 
 # Mac-specific
 # TODO: Make mac-only check
