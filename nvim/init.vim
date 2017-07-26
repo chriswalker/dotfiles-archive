@@ -274,3 +274,15 @@ map <leader>g :GFiles<cr>
 "map <leader>t :Tags<cr>
 
 let g:fzf_layout = { 'down': '~20%' }
+
+" Customize fzf colors to match neodark theme
+let g:fzf_colors = {
+      \ 'bg':          ['bg', 'CursorLine'],
+      \ 'bg+':         ['bg', 'CursorLine'],
+      \ 'info':        ['fg', 'Keyword'],
+      \ 'prompt':      ['fg', 'Function', 'Bold'],
+      \ 'marker':      ['fg', 'Float', 'Bold'],
+      \ 'hl':          ['fg', 'Float', 'Bold'],
+      \ 'hl+':         ['fg', 'Float', 'Bold'],
+      \ 'header':      ['bg', 'CursorLine']
+\ }
