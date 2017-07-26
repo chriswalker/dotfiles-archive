@@ -64,11 +64,9 @@ function fish_prompt --description 'Write out the prompt with colours based on b
     set -g normal (set_color normal)
     set -g blue (set_color --bold blue)
     set -g yellow (set_color --bold yellow) 
-    set -g bold_orange (set_color --bold brred)
-    #    set -g magenta (set_color magenta)
-    #    set -g green (set_color green)
-    #set -g red (set_color red)
-    #set -g gray (set_color -o black)
+    set -g bold_orange (set_color --bold cyan)
+    set -g magenta (set_color magenta)
+    set -g green (set_color green)
 
     set -g time (date "+%H:%M:%S")
 
