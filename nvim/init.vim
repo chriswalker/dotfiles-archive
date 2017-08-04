@@ -140,11 +140,6 @@ set fillchars+=vert:\
 " Highlight all chars past col 100 to encourage line breaks; "Float" defaults
 " to red in neodark theme
 call matchadd('Float', '\%101v.\+', 100)
-"
-" Markdown
-" -----------------------------------------------------------------------------
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-let g:markdown_fenced_languages = ['html', 'javascript', 'go', 'bash=sh']
 
 "
 " Theme settings 
@@ -154,6 +149,12 @@ let g:neodark#use_custom_terminal_theme = 1
 let g:neodark#solid_vertsplit = 1
 colorscheme neodark
 highlight Comment cterm=italic
+
+"
+" Markdown
+" -----------------------------------------------------------------------------
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['html', 'javascript', 'go', 'bash=sh']
 
 "
 " Vim-go 
