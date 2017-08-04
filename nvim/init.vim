@@ -74,9 +74,6 @@ set noswapfile
 " indent by multiples of tabstop
 set shiftround
 
-" 'Print' column at 80 chars
-set colorcolumn=80
-
 " Tree-style listing in netrw
 let g:netrw_liststyle=3
 
@@ -140,6 +137,9 @@ set expandtab
 set cursorline
 set fillchars+=vert:\ 
 
+" Highlight all chars past col 100 to encourage line breaks; "Float" defaults
+" to red in neodark theme
+call matchadd('Float', '\%101v.\+', 100)
 "
 " Markdown
 " -----------------------------------------------------------------------------
