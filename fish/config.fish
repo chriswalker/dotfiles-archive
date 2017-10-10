@@ -62,6 +62,7 @@ alias less "/usr/local/Cellar/vim/7.4.1468/share/vim/vim74/macros/less.sh $1"
 # Top display in CPU decending order
 alias top "top -o cpu"
 alias k "kubectl"
+alias kgp "kubectl get pods|grep $1"
 
 # Mac-specific
 # TODO: Make mac-only check
