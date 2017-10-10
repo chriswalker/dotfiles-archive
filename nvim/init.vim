@@ -23,8 +23,7 @@ set t_kb=
 call plug#begin('~/.config/nvim/plugged')
 " Ui & theming
 Plug 'KeitaNakamura/neodark.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 " Development
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
@@ -182,14 +181,12 @@ autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 
 "
-" Vim-airline (Powerline equivalent, non-Python)
+" lightline 
 " -----------------------------------------------------------------------------
 
-let g:airline_theme='neodark'
-
-" Remove default seperators
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+let g:lightline = {
+  \ 'colorscheme': 'neodark'
+  \ }
 
 " Disable mode display, as it's part of the status bar in standard themes
 set noshowmode
