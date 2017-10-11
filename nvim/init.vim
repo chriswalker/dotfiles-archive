@@ -159,7 +159,7 @@ let g:markdown_fenced_languages = ['html', 'javascript', 'go', 'bash=sh']
 " Vim-go 
 " -----------------------------------------------------------------------------
 let g:go_highlight_functions=1  
-let g:go_highlight_methods=1  
+let g:go_highlight_methods=0  
 let g:go_highlight_structs=1  
 let g:go_highlight_operators=1
 let g:go_highlight_interfaces=1
@@ -185,7 +185,14 @@ autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 " -----------------------------------------------------------------------------
 
 let g:lightline = {
-  \ 'colorscheme': 'neodark'
+  \ 'colorscheme': 'neodark',
+  \ 'active': {
+  \    'left': [ [ 'mode', 'paste'],
+  \              ['gitbranch', 'readonly', 'filename', 'modified'] ]
+  \  },
+  \  'component_function': {
+  \    'gitbranch': 'fugitive#head'
+  \  },
   \ }
 
 " Disable mode display, as it's part of the status bar in standard themes
