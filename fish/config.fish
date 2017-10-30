@@ -53,7 +53,12 @@ set PATH $GOROOT/bin $GOPATH/bin ~/bin ~/Dev/Work/google-cloud-sdk/bin $PATH
 # Aliases
 # -----------------------------------------------------------------------------
 
-alias ls "ls -GFh --color=auto"
+switch (uname)
+case Linux
+  alias ls "ls -GFh --color=auto"
+case Darwin
+  alias ls "ls -GFh"
+end
 alias h "history"
 alias history "history -t \"[%d/%m/%y %T]\""
 alias grep "grep --color=auto"
