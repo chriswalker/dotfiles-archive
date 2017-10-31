@@ -180,6 +180,7 @@ autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 " Map <leader>a to GoAlternate
 autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 
+let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
 "
 " lightline 
 " -----------------------------------------------------------------------------
