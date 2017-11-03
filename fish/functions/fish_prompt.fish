@@ -31,7 +31,7 @@ function fish_prompt --description 'Write out the prompt with colours based on b
         set -g __fish_git_prompt_char_stagedstate "●"
     end
     if not set -q __fish_git_prompt_char_dirtystate
-        set -g __fish_git_prompt_char_dirtystate "✚"
+        set -g __fish_git_prompt_char_dirtystate "+"
     end
     if not set -q __fish_git_prompt_char_untrackedfiles
         set -g __fish_git_prompt_char_untrackedfiles "…"
@@ -75,7 +75,13 @@ function fish_prompt --description 'Write out the prompt with colours based on b
     # pwd
     printf '%s%s%s' $yellow (prompt_pwd) $normal
     # VCS
-    printf '%s%s\n' (__fish_vcs_prompt)
+    printf '%s%s ' (__fish_vcs_prompt)
+
+    # Kubernetes ctx/ns output
+    set k8s_ctx (kubectl config current-context)
+    set k8s_ns (kubectl config view -o=jsonpath="{.contexts[?(@.name==\"$k8s_ctx\")].context.namespace}")
+    printf '%s[%s/%s]\n' $green $k8s_ctx $k8s_ns
+
     # Second line
     printf $bold_orange
     printf '> '
