@@ -31,6 +31,8 @@ Plug 'elzr/vim-json'
 Plug 'tpope/vim-fugitive'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
 " Misc
 Plug 'w0rp/ale'
 Plug 'Shougo/neosnippet.vim'
@@ -41,7 +43,6 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
-"Plug 'wincent/terminus'
 Plug 'dag/vim-fish'
 Plug 'christoomey/vim-tmux-navigator'
 " Reminder of other plugins I've used; just don't want to forget 'em
@@ -245,6 +246,8 @@ autocmd FileType * nested :call tagbar#autoopen(0)
 " Deoplete
 " -----------------------------------------------------------------------------
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#max_list = 10
+let g:deoplete#max_menu_width = 20
 
 "
 " Deoplete-go
