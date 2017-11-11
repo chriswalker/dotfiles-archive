@@ -66,7 +66,7 @@ function fish_prompt --description 'Write out the prompt with colours based on b
     set -g yellow (set_color --bold yellow) 
     set -g bold_orange (set_color --bold cyan)
     set -g magenta (set_color magenta)
-    set -g green (set_color green)
+    set -g bold_green (set_color --bold green)
 
     set -g time (date "+%H:%M:%S")
 
@@ -80,7 +80,7 @@ function fish_prompt --description 'Write out the prompt with colours based on b
     # Kubernetes ctx/ns output
     set k8s_ctx (kubectl config current-context)
     set k8s_ns (kubectl config view -o=jsonpath="{.contexts[?(@.name==\"$k8s_ctx\")].context.namespace}")
-    printf '%s[%s/%s]\n' $green $k8s_ctx $k8s_ns
+    printf '%s[%s/%s]\n' $bold_green $k8s_ctx $k8s_ns
 
     # Second line
     printf $bold_orange
