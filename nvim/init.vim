@@ -35,8 +35,9 @@ Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 " Misc
 Plug 'w0rp/ale'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+"Plug 'Shougo/neosnippet.vim'
+"Plug 'Shougo/neosnippet-snippets'
+Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make' }
 Plug 'ervandew/supertab'
@@ -169,7 +170,7 @@ let g:go_fmt_command="goreturns"
 let g:go_auto_sameids=1
 let g:go_metalinter_autosave=1
 let g:go_auto_type_info=1
-let g:go_snippet_engine='neosnippet'
+"let g:go_snippet_engine='neosnippet'
 let g:go_list_height=10
 "let g:go_list_type="quickfix"
 "let g:go_fmt_fail_silently=1
@@ -249,6 +250,9 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#max_list = 10
 let g:deoplete#max_menu_width = 20
 
+" Switch tab ordering, so from top of completion list down; map to tab/shift-tab
+
+
 "
 " Deoplete-go
 " -----------------------------------------------------------------------------
@@ -259,9 +263,9 @@ let g:deoplete#sources#go#gocode_binary=$GOPATH.'/bin/gocode'
 " -----------------------------------------------------------------------------
 
 " Use Tab to jump between placehoders
-imap <Tab> <Plug>(neosnippet_expand_or_jump)
-smap <Tab> <Plug>(neosnippet_expand_or_jump)
-xmap <Tab> <Plug>(neosnippet_expand_target)
+"imap <Tab> <Plug>(neosnippet_expand_or_jump)
+"smap <Tab> <Plug>(neosnippet_expand_or_jump)
+"xmap <Tab> <Plug>(neosnippet_expand_target)
 
 "
 " ale
