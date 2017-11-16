@@ -35,8 +35,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 " Misc
 Plug 'w0rp/ale'
-"Plug 'Shougo/neosnippet.vim'
-"Plug 'Shougo/neosnippet-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make' }
@@ -183,6 +181,7 @@ autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 
 let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
+
 "
 " lightline 
 " -----------------------------------------------------------------------------
