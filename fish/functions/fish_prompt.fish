@@ -83,6 +83,5 @@ function fish_prompt --description 'Write out the prompt with colours based on b
     printf '%s[%s/%s]\n' $bold_green $k8s_ctx $k8s_ns
 
     # Second line
-    printf $bold_orange
-    printf '> '
+    printf '%s> ' $bold_orange
 end
