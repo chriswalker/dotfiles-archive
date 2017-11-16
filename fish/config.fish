@@ -9,8 +9,8 @@
 # General settings
 # -----------------------------------------------------------------------------
 
-# Vim as the default editor
-set -U EDITOR vim
+# Neovim as the default editor
+set -U EDITOR nvim
 
 # Vi(m) bindings on the prompt
 set fish_key_bindings fish_vi_key_bindings
@@ -42,41 +42,35 @@ set PATH $GOROOT/bin $GOPATH/bin ~/bin ~/Dev/Work/google-cloud-sdk/bin $PATH
 #
 # UI tweaks
 # -----------------------------------------------------------------------------
-#switch (uname)
-#case Linux
-#  ~/dotfiles/nvim/plugged/gruvbox/gruvbox_256palette.sh
-#case Darwin
-#  ~/dotfiles/nvim/plugged/gruvbox/gruvbox_256palette_osx.sh
-#end
 
 #
 # Aliases
 # -----------------------------------------------------------------------------
 
+# Architecture-specific
 switch (uname)
 case Linux
   alias ls "ls -GFh --color=auto"
 case Darwin
   alias ls "ls -GFh"
+  alias ql "qlmanage -p"
+  alias o "open"
+  # Alias Neovim's less script to normal less
+  alias less "/usr/local/Cellar/neovim/0.2.1/share/nvim/runtime/macros/less.sh $1"
 end
+
+# General
+# TODO - tweak history aliases
 alias h "history"
 alias history "history -t \"[%d/%m/%y %T]\""
 alias grep "grep --color=auto"
-# Alias Vim's less script to normal less
-alias less "/usr/local/Cellar/vim/7.4.1468/share/vim/vim74/macros/less.sh $1"
 # Top display in CPU decending order
 alias top "top -o cpu"
 alias k "kubectl"
 alias kgp "kubectl get pods|grep $1"
 
-# Mac-specific
-# TODO: Make mac-only check
-alias ql "qlmanage -p"
-alias o "open"
-
 #
-# Client-speciic config; not stored in repo
+# Work specific config 
 # TODO
 # -----------------------------------------------------------------------------
-# source $HOME/dotfiles/.zsh/work.zsh
 
