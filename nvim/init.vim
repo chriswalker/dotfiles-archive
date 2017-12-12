@@ -148,7 +148,7 @@ let g:neodark#use_custom_terminal_theme = 1
 let g:neodark#solid_vertsplit = 1
 colorscheme neodark
 highlight Comment cterm=italic
-
+highlight TermCursor ctermfg=red
 "
 " Markdown
 " -----------------------------------------------------------------------------
