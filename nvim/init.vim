@@ -167,7 +167,7 @@ let g:gruvbox_italicize_comments = '1'
 colorscheme gruvbox
 highlight Comment cterm=italic
 syntax on
-
+highlight TermCursor ctermfg=red
 "
 " Markdown
 " -----------------------------------------------------------------------------
