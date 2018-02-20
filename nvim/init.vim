@@ -12,7 +12,8 @@ set lazyredraw
 set autowrite
 
 " Set shell as login/interactive shell is fish, which causes problems for Vim
-set shell=/bin/bash
+"set shell=/bin/bash
+set shell=/usr/local/bin/fish
 
 " Accept ^? as backspace char (allows remapping of C-h for moving to a left
 " split) - NOTE: Must set up terminal emulator to emit ^? when backspace is
@@ -23,6 +24,7 @@ set t_kb=
 call plug#begin('~/.config/nvim/plugged')
 " Ui & theming
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 " Development
 Plug 'airblade/vim-gitgutter'
@@ -33,8 +35,13 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
-" Misc
 Plug 'w0rp/ale'
+" Filetypes
+Plug 'elzr/vim-json'
+Plug 'cespare/vim-toml'
+Plug 'stephpy/vim-yaml'
+Plug 'dag/vim-fish'
+" Misc
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make' }
@@ -42,7 +49,6 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'dag/vim-fish'
 Plug 'christoomey/vim-tmux-navigator'
 " Reminder of other plugins I've used; just don't want to forget 'em
 " 'chriskempson/base16-vim'
@@ -103,6 +109,8 @@ tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
 
+" Highlight terminal cursor differently to editing cursor
+highlight TermCursor ctermfg=red guifg=red
 set splitbelow
 set splitright
 
@@ -140,14 +148,25 @@ set fillchars+=vert:\
 " to red in neodark theme
 call matchadd('Float', '\%101v.\+', 100)
 
+
 "
 " Theme settings 
 " -----------------------------------------------------------------------------
 set background=dark
-let g:neodark#use_custom_terminal_theme = 1
-let g:neodark#solid_vertsplit = 1
-colorscheme neodark
+"let g:neodark#use_custom_terminal_theme = 1
+"let g:neodark#solid_vertsplit = 1
+"let g:neodark#user_256color = 1
+"let g:neodark#background = '#202020'
+"colorscheme neodark
+let g:gruvbox_sign_column = 'bg0'
+let g:gruvbox_color_column = 'bg0'
+let g:gruvbox_vert_split = 'bg1'
+let g:grvbox_bold = '0'
+let g:gruvbox_italic = '1'
+let g:gruvbox_italicize_comments = '1'
+colorscheme gruvbox
 highlight Comment cterm=italic
+syntax on
 
 "
 " Markdown
@@ -178,7 +197,7 @@ autocmd FileType go nmap <leader>t  <Plug>(go-test)
 " Map <leader>c to GoCoverageToggle
 autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 " Map <leader>a to GoAlternate
-autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
+autocmd FileType go nmap <leader>a  <Plug>(go-alternate) 
 
 let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
 
@@ -187,7 +206,7 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
 " -----------------------------------------------------------------------------
 
 let g:lightline = {
-  \ 'colorscheme': 'neodark',
+  \ 'colorscheme': 'gruvbox',
   \ 'active': {
   \    'left': [ [ 'mode', 'paste'],
   \              ['gitbranch', 'readonly', 'filename', 'modified'] ]
