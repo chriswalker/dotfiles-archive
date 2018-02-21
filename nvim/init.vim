@@ -23,8 +23,8 @@ set t_kb=
 " vim-plug - handle required plugins
 call plug#begin('~/.config/nvim/plugged')
 " Ui & theming
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'morhetz/gruvbox'
+"Plug 'KeitaNakamura/neodark.vim'
+Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 Plug 'itchyny/lightline.vim'
 " Development
 Plug 'airblade/vim-gitgutter'
@@ -148,26 +148,21 @@ set fillchars+=vert:\
 " to red in neodark theme
 call matchadd('Float', '\%101v.\+', 100)
 
-
 "
 " Theme settings 
 " -----------------------------------------------------------------------------
-set background=dark
+"set background=dark
 "let g:neodark#use_custom_terminal_theme = 1
 "let g:neodark#solid_vertsplit = 1
 "let g:neodark#user_256color = 1
 "let g:neodark#background = '#202020'
 "colorscheme neodark
-let g:gruvbox_sign_column = 'bg0'
-let g:gruvbox_color_column = 'bg0'
-let g:gruvbox_vert_split = 'bg1'
-let g:grvbox_bold = '0'
-let g:gruvbox_italic = '1'
-let g:gruvbox_italicize_comments = '1'
-colorscheme gruvbox
-highlight Comment cterm=italic
 syntax on
+set termguicolors
+colorscheme onehalfdark
+highlight Comment cterm=italic
 highlight TermCursor ctermfg=red
+
 "
 " Markdown
 " -----------------------------------------------------------------------------
@@ -204,9 +199,8 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
 "
 " lightline 
 " -----------------------------------------------------------------------------
-
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'onehalfdark',
   \ 'active': {
   \    'left': [ [ 'mode', 'paste'],
   \              ['gitbranch', 'readonly', 'filename', 'modified'] ]
@@ -222,7 +216,6 @@ set noshowmode
 "
 " Tagbar
 " -----------------------------------------------------------------------------
-
 "nmap <leader>b :TagbarToggle<CR>
 
 " General UI config
@@ -279,7 +272,6 @@ let g:deoplete#sources#go#gocode_binary=$GOPATH.'/bin/gocode'
 "
 " Neosnippets 
 " -----------------------------------------------------------------------------
-
 " Use Tab to jump between placehoders
 "imap <Tab> <Plug>(neosnippet_expand_or_jump)
 "smap <Tab> <Plug>(neosnippet_expand_or_jump)
