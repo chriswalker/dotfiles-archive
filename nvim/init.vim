@@ -23,8 +23,7 @@ set t_kb=
 " vim-plug - handle required plugins
 call plug#begin('~/.config/nvim/plugged')
 " Ui & theming
-"Plug 'KeitaNakamura/neodark.vim'
-Plug 'sonph/onehalf', { 'rtp': 'vim/' }
+Plug 'chriswalker/neodark.vim'
 Plug 'itchyny/lightline.vim'
 " Development
 Plug 'airblade/vim-gitgutter'
@@ -151,15 +150,13 @@ call matchadd('Float', '\%101v.\+', 100)
 "
 " Theme settings 
 " -----------------------------------------------------------------------------
-"set background=dark
-"let g:neodark#use_custom_terminal_theme = 1
-"let g:neodark#solid_vertsplit = 1
-"let g:neodark#user_256color = 1
-"let g:neodark#background = '#202020'
-"colorscheme neodark
+set background=dark
+let g:neodark#use_custom_terminal_theme = 1
+let g:neodark#solid_vertsplit = 1
+let g:neodark#user_256color = 1
+let g:neodark#background = '#202020'
+colorscheme neodark
 syntax on
-set termguicolors
-colorscheme onehalfdark
 highlight Comment cterm=italic
 highlight TermCursor ctermfg=red
 
@@ -200,7 +197,7 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
 " lightline 
 " -----------------------------------------------------------------------------
 let g:lightline = {
-  \ 'colorscheme': 'onehalfdark',
+  \ 'colorscheme': 'neodark',
   \ 'active': {
   \    'left': [ [ 'mode', 'paste'],
   \              ['gitbranch', 'readonly', 'filename', 'modified'] ]
