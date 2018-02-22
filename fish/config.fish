@@ -29,17 +29,18 @@ end
 
 set -x GOPATH ~/Dev/Projects/Go
 
-# Java
-set -g JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home 
-set -g JDK_HOME $JAVA_HOME
-
 # Data directory for docker volume mounts etc
 set -g DATA_HOME ~/Dev/data
 
 # Update path
-set PATH $GOROOT/bin $GOPATH/bin ~/bin ~/Dev/Work/google-cloud-sdk/bin $PATH
+set PATH $GOROOT/bin $GOPATH/bin ~/bin $PATH
 
-#
+switch (uname)
+case Darwin
+  set PATH ~/Dev/Work/google-cloud-sdk/bin $PATH
+end
+
+
 # UI tweaks
 # -----------------------------------------------------------------------------
 
