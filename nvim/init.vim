@@ -15,7 +15,7 @@ set autowrite
 let s:uname = system("uname")
 if s:uname =~ "Linux"
   set shell=/usr/bin/fish
-elseif s:uname +~ "Darwin"
+elseif s:uname =~ "Darwin"
   set shell=/usr/local/bin/fish
 endif
 
