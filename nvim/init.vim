@@ -12,8 +12,12 @@ set lazyredraw
 set autowrite
 
 " Set shell as login/interactive shell is fish, which causes problems for Vim
-"set shell=/bin/bash
-set shell=/usr/local/bin/fish
+let s:uname = system("uname")
+if s:uname =~ "Linux"
+  set shell=/usr/bin/fish
+elseif s:uname +~ "Darwin"
+  set shell=/usr/local/bin/fish
+endif
 
 " Accept ^? as backspace char (allows remapping of C-h for moving to a left
 " split) - NOTE: Must set up terminal emulator to emit ^? when backspace is
