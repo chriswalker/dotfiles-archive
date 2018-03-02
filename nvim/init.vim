@@ -221,7 +221,14 @@ set noshowmode
 
 " General UI config
 let g:tagbar_left=1
-let g:tagbar_width=35
+
+if s:uname =~ "Darwin"
+  let s:tagbar_width = 35
+elseif s:uname =~ "Linux"
+  " Probably on DO droplet
+  let s:tagbar_width = 25
+endif
+let g:tagbar_width = s:tagbar_width
 
 " Configuration for Golang, using gotags
 let g:tagbar_type_go = {
