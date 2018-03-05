@@ -74,5 +74,5 @@ alias kgp "kubectl get pods|grep $1"
 # Work specific config 
 # TODO
 # -----------------------------------------------------------------------------
-set -gx K8S_MANIFESTS_DIR $HOME/Dev/Projects/Misc/k8s-manifests
+set -gx K8S_MANIFESTS_DIR $HOME/Dev/Projects/Work/k8s-manifests
 set -gx DATA_DIR $HOME/Dev/tmp
