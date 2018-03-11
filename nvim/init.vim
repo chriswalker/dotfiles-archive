@@ -28,6 +28,7 @@ set t_kb=
 call plug#begin('~/.config/nvim/plugged')
 " Ui & theming
 Plug 'chriswalker/neodark.vim'
+Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'itchyny/lightline.vim'
 " Development
 Plug 'airblade/vim-gitgutter'
@@ -155,11 +156,12 @@ call matchadd('Float', '\%101v.\+', 100)
 " Theme settings 
 " -----------------------------------------------------------------------------
 set background=dark
-let g:neodark#use_custom_terminal_theme = 1
-let g:neodark#solid_vertsplit = 1
-let g:neodark#user_256color = 1
-let g:neodark#background = '#202020'
-colorscheme neodark
+"let g:neodark#use_custom_terminal_theme = 1
+"let g:neodark#solid_vertsplit = 1
+"let g:neodark#user_256color = 1
+"let g:neodark#background = '#202020'
+set termguicolors
+colorscheme deep-space
 syntax on
 highlight Comment cterm=italic
 highlight TermCursor ctermfg=red
@@ -201,7 +203,7 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
 " lightline 
 " -----------------------------------------------------------------------------
 let g:lightline = {
-  \ 'colorscheme': 'neodark',
+  \ 'colorscheme': 'deepspace',
   \ 'active': {
   \    'left': [ ['mode', 'paste'],
   \              ['gitbranch', 'readonly', 'filename', 'modified'] ]
@@ -289,11 +291,8 @@ let g:deoplete#sources#go#gocode_binary=$GOPATH.'/bin/gocode'
 " ale
 " -----------------------------------------------------------------------------
 " Error and warning signs.
-"let g:ale_sign_error = 'X'
-"let g:ale_sign_warning = '!'
-
-" Enable integration with airline.
-let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_error = '▶▶'
+let g:ale_sign_warning = '▶▶'
 
 "
 " fzf-vim
@@ -306,7 +305,7 @@ map <leader>g :GFiles<cr>
 
 let g:fzf_layout = { 'down': '~20%' }
 
-" Customize fzf colors to match neodark theme
+" Customize fzf colors to match theme
 let g:fzf_colors = {
       \ 'bg':          ['bg', 'CursorLine'],
       \ 'bg+':         ['bg', 'CursorLine'],
@@ -317,3 +316,10 @@ let g:fzf_colors = {
       \ 'hl+':         ['fg', 'Float', 'Bold'],
       \ 'header':      ['bg', 'CursorLine']
 \ }
+
+"
+" gitgutter
+" -----------------------------------------------------------------------------
+let g:gitgutter_sign_added = '┃'
+let g:gitgutter_sign_modified = '┃'
+let g:gitgutter_sign_removed = '┃'

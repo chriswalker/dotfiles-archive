@@ -76,3 +76,10 @@ alias kgp "kubectl get pods|grep $1"
 # -----------------------------------------------------------------------------
 set -gx K8S_MANIFESTS_DIR $HOME/Dev/Projects/Work/k8s-manifests
 set -gx DATA_DIR $HOME/Dev/tmp
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.fish
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.fish
