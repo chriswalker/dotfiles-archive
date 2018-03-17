@@ -160,6 +160,7 @@ set background=dark
 "let g:neodark#solid_vertsplit = 1
 "let g:neodark#user_256color = 1
 "let g:neodark#background = '#202020'
+"colorscheme neodark
 set termguicolors
 colorscheme deep-space
 syntax on
@@ -293,7 +294,8 @@ let g:deoplete#sources#go#gocode_binary=$GOPATH.'/bin/gocode'
 " Error and warning signs.
 let g:ale_sign_error = '▶▶'
 let g:ale_sign_warning = '▶▶'
-
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 'always'
 "
 " fzf-vim
 " -----------------------------------------------------------------------------
