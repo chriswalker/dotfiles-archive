@@ -13,6 +13,7 @@ set autowrite
 
 " Set shell as login/interactive shell is fish, which causes problems for Vim
 let s:uname = system("uname")
+
 if s:uname =~ "Linux"
   set shell=/usr/bin/fish
 elseif s:uname =~ "Darwin"
@@ -40,6 +41,9 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'w0rp/ale'
+if s:uname =~ "Darwin"
+  Plug 'rizzatti/dash.vim'
+endif
 " Filetypes
 Plug 'elzr/vim-json'
 Plug 'cespare/vim-toml'
@@ -54,14 +58,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
-" Reminder of other plugins I've used; just don't want to forget 'em
-" 'chriskempson/base16-vim'
-" 'morhetz/gruvbox'
-" 'altercation/vim-colors-solarized'
-"   vim-ack
-"   vim-commentary
-"   vim-easymotion
-"   vim-colors-solarized
 call plug#end()
 
 " Speed up update interval 
@@ -323,3 +319,10 @@ let g:fzf_colors = {
 let g:gitgutter_sign_added = '┃'
 let g:gitgutter_sign_modified = '┃'
 let g:gitgutter_sign_removed = '┃'
+
+"
+" dash.vim
+" -----------------------------------------------------------------------------
+if s:uname =~ "Darwin"
+ nmap <silent> <leader>d <Plug>DashSearch
+endif
