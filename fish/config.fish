@@ -75,6 +75,7 @@ alias kgp "kubectl get pods|grep $1"
 # TODO
 # -----------------------------------------------------------------------------
 set -gx K8S_MANIFESTS_DIR $HOME/Dev/Projects/Work/k8s-manifests
+set -gx K8S_VPN_USERNAME chris.walker
 set -gx DATA_DIR $HOME/Dev/tmp
 
 # tabtab source for serverless package
@@ -83,3 +84,5 @@ set -gx DATA_DIR $HOME/Dev/tmp
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.fish
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
