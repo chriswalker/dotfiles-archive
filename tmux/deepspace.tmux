@@ -12,7 +12,7 @@ set -g pane-border-fg black
 
 # Left 
 set -g status-left-length 30
-set -g status-left "  " 
+set -g status-left " " 
 
 # Window list
 set -g status-justify left
@@ -20,11 +20,11 @@ set -g window-status-separator " "
 setw -g window-status-style "none"
 
 setw -g window-status-format "#[bg=#232936,fg=colour8] #I #[bg=#232936,fg=colour8]#W #F "
-setw -g window-status-current-format "#[bg=#232936,fg=colour9,bold] #I #[bg=#232936,fg=colour9,bold]#W #F "
+setw -g window-status-current-format "#[bg=black,fg=colour9,bold] #I #[bg=black,fg=colour9,bold]#W #F "
 
 setw -g window-status-activity-style "fg=colour1,bg=colour240"
 
 # Right side
 set -g status-right-length 50
 set -g status-right-style "none"
-set -g status-right "#[bg=black,fg=colour2] %a %H:%M %d/%m/%Y #[fg=colour6]#S@#h "
+set -g status-right " #[fg=colour2] %a %H:%M %d/%m/%Y #[bg=black,fg=colour6] #S@#h #[bg=colour8,fg=colour15,bold] #S "
