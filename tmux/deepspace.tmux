@@ -27,4 +27,4 @@ setw -g window-status-activity-style "fg=colour1,bg=colour240"
 # Right side
 set -g status-right-length 50
 set -g status-right-style "none"
-set -g status-right " #[fg=colour2] %a %H:%M %d/%m/%Y #[bg=black,fg=colour6] #S@#h #[bg=colour8,fg=colour15,bold] #S "
+set -g status-right " #[fg=colour2] %a %H:%M %d/%m/%Y #[bg=black,fg=colour6] #(whoami)@#h #[bg=colour8,fg=colour15,bold] #S "
