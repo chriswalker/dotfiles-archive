@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ln -fs ~/dotfiles/.tmux.conf ~
+ln -fs ~/dotfiles/tmux/.tmux.conf ~
 ln -fs ~/dotfiles/misc/.ackrc ~
 
 rm -rf ~/.config/fish ~/.config/nvim
