@@ -1,10 +1,7 @@
 #!/bin/bash
 
-#ln -fs dotfiles/.zsh/.zshrc .
 ln -fs ~/dotfiles/.tmux.conf ~
-ln -fs ~/dotfiles/.ackrc ~
-ln -fs ~/dotfiles/.vim/.vimrc ~
-#ln -fs ~/dotfiles/.bashrc ~
+ln -fs ~/dotfiles/misc/.ackrc ~
 
 rm -rf ~/.config/fish ~/.config/nvim
 
