@@ -2,6 +2,7 @@
 
 ln -fs ~/dotfiles/tmux/.tmux.conf ~
 ln -fs ~/dotfiles/misc/.ackrc ~
+ln -fs ~/dotfiles/misc/.tigrc ~
 
 rm -rf ~/.config/fish ~/.config/nvim
 
