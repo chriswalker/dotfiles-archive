@@ -34,6 +34,7 @@ Plug 'itchyny/lightline.vim'
 " Development
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
+Plug 'sebdah/vim-delve'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-fugitive'
 Plug 'ekalinin/Dockerfile.vim'
