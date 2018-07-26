@@ -40,6 +40,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-commentary'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'w0rp/ale'
 if s:uname =~ "Darwin"
