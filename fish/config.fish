@@ -28,6 +28,7 @@ case Darwin
 end
 
 set -x GOPATH ~/Dev/Projects/Go
+set -x GOBIN $GOPATH/bin
 
 # Data directory for docker volume mounts etc
 set -g DATA_HOME ~/Dev/data
