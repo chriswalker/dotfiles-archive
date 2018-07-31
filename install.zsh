@@ -3,6 +3,7 @@
 ln -fs ~/dotfiles/tmux/.tmux.conf ~
 ln -fs ~/dotfiles/misc/.ackrc ~
 ln -fs ~/dotfiles/misc/.tigrc ~
+ln -fs ~/dotfiles/misc/.ripgreprc ~/.config/ripgrep
 
 rm -rf ~/.config/fish ~/.config/nvim
 
