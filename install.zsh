@@ -9,6 +9,7 @@ rm -rf ~/.config/fish ~/.config/nvim
 
 ln -fs ~/dotfiles/fish ~/.config/fish
 ln -fs ~/dotfiles/nvim ~/.config/nvim
+ln -fs ~/dotfiles/kitty ~/.config/kitty
 
 # Tweaked terminfo for tmux's $TERM, replacing ^H (backspace)
 # with ASCII DEL. Allows Ctrl-h to work when remapped in (N)Vim/tmux
