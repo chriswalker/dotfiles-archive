@@ -29,7 +29,7 @@ set t_kb=
 call plug#begin('~/.config/nvim/plugged')
 " Ui & theming
 Plug 'chriswalker/neodark.vim'
-Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'chriswalker/vim-deep-space'
 Plug 'itchyny/lightline.vim'
 " Development
 Plug 'airblade/vim-gitgutter'
@@ -150,6 +150,8 @@ set fillchars+=vert:\
 " to red in neodark theme
 call matchadd('Float', '\%101v.\+', 100)
 
+set foldmethod=indent
+set foldnestmax=1
 "
 " Theme settings 
 " -----------------------------------------------------------------------------
