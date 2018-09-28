@@ -30,6 +30,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Ui & theming
 Plug 'chriswalker/neodark.vim'
 Plug 'chriswalker/vim-deep-space'
+Plug 'chriswalker/vim-scheme-test'
 Plug 'itchyny/lightline.vim'
 " Development
 Plug 'airblade/vim-gitgutter'
@@ -147,20 +148,16 @@ set cursorline
 set fillchars+=vert:\ 
 
 " Highlight all chars past col 100 to encourage line breaks; "Float" defaults
-" to red in neodark theme
+" to red in deepspace theme
 call matchadd('Float', '\%101v.\+', 100)
 
+" Folding
 set foldmethod=indent
 set foldnestmax=1
 "
 " Theme settings 
 " -----------------------------------------------------------------------------
 set background=dark
-"let g:neodark#use_custom_terminal_theme = 1
-"let g:neodark#solid_vertsplit = 1
-"let g:neodark#user_256color = 1
-"let g:neodark#background = '#202020'
-"colorscheme neodark
 set termguicolors
 colorscheme deep-space
 syntax on
@@ -176,12 +173,11 @@ let g:markdown_fenced_languages = ['html', 'javascript', 'go', 'bash=sh']
 "
 " Vim-go 
 " -----------------------------------------------------------------------------
-let g:go_highlight_functions=1  
-let g:go_highlight_methods=0  
-let g:go_highlight_structs=1  
-let g:go_highlight_operators=0
-let g:go_highlight_interfaces=1
+let g:go_highlight_functions=0  
+let g:go_highlight_format_strings = 1
 let g:go_highlight_build_constraints=1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
 let g:go_fmt_command="goimports"
 let g:go_auto_sameids=1
 let g:go_metalinter_autosave=1
