@@ -28,10 +28,10 @@ set t_kb=
 " vim-plug - handle required plugins
 call plug#begin('~/.config/nvim/plugged')
 " Ui & theming
-Plug 'chriswalker/neodark.vim'
-Plug 'chriswalker/vim-deep-space'
-Plug 'chriswalker/vim-scheme-test'
-Plug 'itchyny/lightline.vim'
+"Plug 'chriswalker/vim-deep-space'
+Plug 'chriswalker/vim-orbital'
+Plug 'morhetz/gruvbox'
+"Plug 'itchyny/lightline.vim'
 " Development
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
@@ -154,12 +154,46 @@ call matchadd('Float', '\%101v.\+', 100)
 " Folding
 set foldmethod=indent
 set foldnestmax=1
+
+" Status line
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline+=
+set statusline+=%{StatuslineGit()}
+"set statusline+=%#Function#
+set statusline+=%t
+"set statusline+=%#Structure#
+set statusline+=\ 
+set statusline+=%m
+set statusline+=%=
+set statusline+=\ 
+set statusline+=%{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ 
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ 
+set statusline+=%p%%
+set statusline+=\ 
+set statusline+=%l:%c
+set statusline+=\ 
+
 "
 " Theme settings 
 " -----------------------------------------------------------------------------
 set background=dark
+" Force truecolour
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-colorscheme deep-space
+"colorscheme deep-space
+let g:orbital_italics=1
+colorscheme orbital
 syntax on
 highlight Comment cterm=italic
 highlight TermCursor ctermfg=red
@@ -173,7 +207,7 @@ let g:markdown_fenced_languages = ['html', 'javascript', 'go', 'bash=sh']
 "
 " Vim-go 
 " -----------------------------------------------------------------------------
-let g:go_highlight_functions=0  
+let g:go_highlight_functions=1  
 let g:go_highlight_format_strings = 1
 let g:go_highlight_build_constraints=1
 let g:go_highlight_variable_declarations = 1
@@ -199,7 +233,7 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
 " lightline 
 " -----------------------------------------------------------------------------
 let g:lightline = {
-  \ 'colorscheme': 'deepspace',
+  \ 'colorscheme': 'orbital',
   \ 'active': {
   \    'left': [ ['mode', 'paste'],
   \              ['gitbranch', 'readonly', 'filename', 'modified'] ]
@@ -269,7 +303,6 @@ let g:deoplete#max_menu_width = 20
 
 " Switch tab ordering, so from top of completion list down; map to tab/shift-tab
 
-
 "
 " Deoplete-go
 " -----------------------------------------------------------------------------
@@ -291,6 +324,7 @@ let g:ale_sign_error = '▶▶'
 let g:ale_sign_warning = '▶▶'
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_text_changed = 'always'
+
 "
 " fzf-vim
 " -----------------------------------------------------------------------------
