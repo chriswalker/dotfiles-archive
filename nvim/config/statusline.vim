@@ -1,48 +1,80 @@
 " -----------------------------------------------------------------------------
-" Statusline config, sourceed from main init.vim 
+" Statusline config
 " -----------------------------------------------------------------------------
 
-" Set some colours based off of the theme
- hi User1 guibg=s:gray3 guifg=s:gray5
- hi User2 guibg='#323c4d' guifg='#b5a262'
- hi User3 guibg='#323c4d' guifg='#608cc3'
+" Disable display of mode in command line; mode displayed in statusline
+set noshowmode
 
-" Mode map lists mode code against [text output] and [fg] [bg]
+" Colours taken from the colorscheme's colors/[theme].vim file
+" NORMAL mode
+ hi User1 guibg='#608cc3' guifg='#232936'
+ " INSERT
+ hi User2 guibg='#709d6c' guifg='#232936'
+ " REPLACE
+ hi User3 guibg='#b15e7c' guifg='#232936'
+ " VISUAL/V-LINE/V-BLOCK
+ hi User4 guibg='#b3785d' guifg='#232936'
+ " COMMAND
+ hi User5 guibg='#8f72bf' guifg='#232936'
+ " Current filename
+ hi User6 guibg='#323c4d' guifg='#b5a262'
+ " Modified
+ hi User7 guibg='#323c4d' guifg='#608cc3'
+
+" Mode map lists mode code against [text output] a highlight group above for
+" fg/bg colours
 let s:mode_map = {
-  \  'n': { 'text': 'NORMAL', 'fg': '', 'bg': '' }, 
-  \  'i': { 'text': 'INSERT', 'fg': '', 'bg': '' }, 
-  \  'R': { 'text': 'REPLACE', 'fg': '', 'bg': '' }, 
-  \  'v': { 'text': 'VISUAL', 'fg': '', 'bg': '' }, 
-  \  'V': { 'text': 'V-LINE', 'fg': '', 'bg': '' }, 
-  \  "\<C-v>": { 'text': 'V-BLOCK', 'fg': '', 'bg': '' }, 
-  \  'c': { 'text': 'COMMAND', 'fg': '', 'bg': '' }, 
-  \  's': { 'text': 'SELECT', 'fg': '', 'bg': '' }, 
-  \  'S': { 'text': 'S-LINE', 'fg': '', 'bg': '' }, 
-  \  "\<C-s>": { 'text': 'S-BLOCK', 'fg': '', 'bg': '' }, 
-  \  't': { 'text': 'TERMINAL', 'fg': '', 'bg': '' }, 
+  \  'n':      { 'text': 'NORMAL',  'hi': '1' },
+  \  'i':      { 'text': 'INSERT',  'hi': '2' },
+  \  'R':      { 'text': 'REPLACE', 'hi': '3' },
+  \  'v':      { 'text': 'VISUAL',  'hi': '4' },
+  \  'V':      { 'text': 'V-LINE',  'hi': '4' },
+  \  "\<C-v>": { 'text': 'V-BLOCK', 'hi': '4' },
+  \  'c':      { 'text': 'COMMAND', 'hi': '5' },
 \ }
 
 function! StatuslineMode() abort
   let m = get(s:mode_map, mode(), '')
-  return m['text']
+  return printf('%%%s* %s %%*', m['hi'], m['text'])
 endfunction
 
-set statusline+=
-" TODO - Colour modes!
-set statusline+=\ %{StatuslineMode()}\ 
-set statusline+=%{fugitive#head()}\ 
-" TODO - Expand into func which checks if a file is open; displays nothing if
-" not
-set statusline+=%{expand('%:p:h')}/%3*%t%*
-set statusline+=\ 
-set statusline+=%3*%m%*
-set statusline+=%=
-set statusline+=\ 
-set statusline+=%{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ 
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ 
-set statusline+=%p%%
-set statusline+=\ 
-set statusline+=%l:%c
-set statusline+=\ 
+function! Filepath() abort
+  let path = expand('%:p:h')
+  let filename = expand('%:t')
+
+  return len(l:filename) > 0 ? printf('%s/%%6*%s%%*', path, filename) : '[No file]'
+endfunction
+
+" Generates the statusline string, based on the mode
+function! GenerateStatusLine(mode) abort
+  let line = ''
+
+  if a:mode ==# 'active'
+    let line .= StatuslineMode()
+    let line .= ' %{fugitive#head()}'
+    let line .= ' '
+    let line .= Filepath()
+    let line .= ' %7*%m%*'
+
+    let line .='%='
+
+    let line .= '%p%%'
+    let line .= ' '
+    let line .= '%l:%c '
+  else
+    let line .= ' %f'
+  endif
+
+  return line
+endfunction
+
+augroup MyStatusLine
+  autocmd!
+  autocmd WinEnter * setl statusline=%!GenerateStatusLine('active')
+  autocmd WinLeave * setl statusline=%!GenerateStatusLine('inactive')
+  if exists('#TextChangedI')
+    autocmd BufWinEnter,BufWritePost,FileWritePost,TextChanged,TextChangedI,WinEnter,InsertEnter,InsertLeave,CmdWinEnter,CmdWinLeave,ColorScheme * setl statusline=%!GenerateStatusLine('active')
+  else
+    autocmd BufWinEnter,BufWritePost,FileWritePost,WinEnter,InsertEnter,InsertLeave,CmdWinEnter,CmdWinLeave,ColorScheme * setl statusline=%!GenerateStatusLine('active')
+  endif
+augroup END
