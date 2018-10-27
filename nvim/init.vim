@@ -13,7 +13,6 @@ endfunction
 call plug#begin('~/.config/nvim/plugged')
 " UI & theming
 Plug 'chriswalker/vim-deep-space'
-Plug 'itchyny/lightline.vim'
 " Development
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
@@ -93,6 +92,5 @@ let g:netrw_liststyle=3
 " -----------------------------------------------------------------------------
 source $HOME/.config/nvim/config/keybindings.vim
 source $HOME/.config/nvim/config/ui.vim
-" TODO - [WIP]
-"source $HOME/.config/nvim/config/statusline.vim
+source $HOME/.config/nvim/config/statusline.vim
 source $HOME/.config/nvim/config/plugins.vim

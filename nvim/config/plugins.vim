@@ -34,25 +34,6 @@ autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
 
 "
-" lightline 
-" -----------------------------------------------------------------------------
-let g:lightline = {
-  \ 'colorscheme': 'deepspace',
-  \ 'active': {
-  \    'left': [ ['mode', 'paste'],
-  \              ['gitbranch', 'readonly', 'filename', 'modified'] ]
-  \  },
-  \  'component_function': {
-  \    'gitbranch': 'fugitive#head',
-  \    'filename': 'LightlineFilename',
-  \  },
-  \ }
-
-" Disable mode display, as it's part of the status bar in standard themes
-" TODO - will move into statusline.vim
-set noshowmode
-
-"
 " Tagbar
 " -----------------------------------------------------------------------------
 "nmap <leader>b :TagbarToggle<CR>
