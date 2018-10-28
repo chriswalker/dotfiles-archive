@@ -39,10 +39,14 @@ function! StatuslineMode() abort
 endfunction
 
 function! Filepath() abort
-  let path = expand('%:p:h')
+  let path = expand('%:.:h')
   let filename = expand('%:t')
-
   return len(l:filename) > 0 ? printf('%s/%%6*%s%%*', path, filename) : '[No file]'
+endfunction
+
+function! GitBranch() abort
+  let branch = fugitive#head()
+  return len(branch) > 0 ? printf('[%s]', branch) : ''
 endfunction
 
 " Generates the statusline string, based on the mode
@@ -51,7 +55,8 @@ function! GenerateStatusLine(mode) abort
 
   if a:mode ==# 'active'
     let line .= StatuslineMode()
-    let line .= ' %{fugitive#head()}'
+    let line .= ' '
+    let line .= GitBranch()
     let line .= ' '
     let line .= Filepath()
     let line .= ' %7*%m%*'
@@ -60,7 +65,7 @@ function! GenerateStatusLine(mode) abort
 
     let line .= '%p%%'
     let line .= ' '
-    let line .= '%l:%c '
+    let line .= 'Ln %l/%L, Col %c '
   else
     let line .= ' %f'
   endif
