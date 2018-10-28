@@ -33,8 +33,8 @@ set background=dark
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-let g:deepspace_italics=1
-colorscheme deep-space
+let g:orbital_italics=1
+colorscheme orbital
 syntax on
 highlight Comment cterm=italic
 highlight TermCursor ctermfg=red

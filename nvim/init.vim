@@ -12,7 +12,7 @@ endfunction
 " ----------------------------------------------------------------------------
 call plug#begin('~/.config/nvim/plugged')
 " UI & theming
-Plug 'chriswalker/vim-deep-space'
+Plug 'chriswalker/vim-orbital'
 " Development
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
