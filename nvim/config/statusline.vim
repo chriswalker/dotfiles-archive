@@ -46,7 +46,7 @@ endfunction
 
 function! GitBranch() abort
   let branch = fugitive#head()
-  return len(branch) > 0 ? printf('  %s', branch) : ''
+  return len(branch) > 0 ? printf(' %s', branch) : ''
 endfunction
 
 " Generates the statusline string, based on the mode
