@@ -119,7 +119,11 @@ imap <c-x><c-o> <plug>(fzf-complete-line)
 map <leader>b :Buffers<cr>
 map <leader>f :Files<cr>
 map <leader>g :GFiles<cr>
-"map <leader>t :Tags<cr>
+"map <leader>q :Tags<cr>
+map <leader>rg :Rg<CR>
+noremap <silent> <leader>grc :Commits<CR>
+noremap <silent> <leader>gbc :BCommits<CR>
+
 
 let g:fzf_layout = { 'down': '~20%' }
 
@@ -127,7 +131,7 @@ let g:fzf_layout = { 'down': '~20%' }
 let g:fzf_colors = {
       \ 'bg':          ['bg', 'CursorLine'],
       \ 'bg+':         ['bg', 'CursorLine'],
-      \ 'info':        ['fg', 'Keyword'],
+      \ 'info':        ['fg', 'String'],
       \ 'prompt':      ['fg', 'Function', 'Bold'],
       \ 'marker':      ['fg', 'Float', 'Bold'],
       \ 'hl':          ['fg', 'Float', 'Bold'],
@@ -139,8 +143,9 @@ autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noruler
   \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
-" New command, Find, which uses ripgrep
-command! -bang -nargs=* Find call fzf#vim#grep('rg --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+" Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 "
 " gitgutter
@@ -153,5 +158,5 @@ let g:gitgutter_sign_removed = '┃'
 " dash.vim
 " -----------------------------------------------------------------------------
 if GetOS() =~ "Darwin"
- nmap <silent> <leader>d <Plug>DashSearch
+  nmap <silent> <leader>d <Plug>DashSearch
 endif
