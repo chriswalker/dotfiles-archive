@@ -6,6 +6,12 @@
 set -g status-fg colour7
 set -g status-bg '#232936' 
 
+# Message/Command line
+set -g message-style fg=black,bg=colour9,bold
+
+# Mode/Cut/Paste
+set -g mode-style fg=black,bg=colour9,bold
+
 # Active pane foreground
 set -g pane-active-border-fg colour8
 set -g pane-border-fg black

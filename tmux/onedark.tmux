@@ -6,6 +6,12 @@
 set -g status-fg colour7
 set -g status-bg "#2C323C"
 
+# Message/Command line
+set -g message-style fg=black,bg=colour11,bold
+
+# Mode/Cut/Paste
+set -g mode-style fg=black,bg=colour11,bold
+
 # Active pane foreground
 set -g pane-active-border-fg colour15
 set -g pane-border-fg colour8
@@ -20,7 +26,7 @@ set -g window-status-separator " "
 setw -g window-status-style "none"
 
 setw -g window-status-format "#[bg=#2C323C,fg=colour7] #I #[bg=#2C323C,fg=colour7]#W #F "
-setw -g window-status-current-format "#[bg=black,fg=colour11,bold] #I #[bg=black,fg=colour11,bold]#W #F "
+setw -g window-status-current-format "#[bg=#2C323C,fg=colour11,bold] #I #[bg=#2C323C,fg=colour11,bold]#W #F "
 
 setw -g window-status-activity-style "fg=colour1,bg=colour240"
 
