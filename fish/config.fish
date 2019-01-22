@@ -19,6 +19,8 @@ set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep
 
 set -x FZF_DEFAULT_COMMAND 'rg --hidden -l ""'
 
+set -x BAT_CONFIG_PATH '~/dotfiles/misc/bat.conf'
+
 #
 # Set up various path entries
 # -----------------------------------------------------------------------------
@@ -31,15 +33,16 @@ case Darwin
   set -g GOROOT /usr/local/Cellar/go/1.8/libexec
 end
 
-set -x GOPATH ~/Dev/Projects/Go
+set -x GOPATH ~/Dev/Go
 set -x GOBIN $GOPATH/bin
 
 # Data directory for docker volume mounts etc
 set -g DATA_HOME ~/Dev/data
 
 # Update path
-set PATH $GOROOT/bin $GOPATH/bin ~/bin $PATH
+set PATH $GOROOT/bin $GOBIN ~/bin $PATH
 
+# GCP - TODO: Change for Linux as well
 switch (uname)
 case Darwin
   set PATH ~/Dev/Work/google-cloud-sdk/bin $PATH
@@ -70,10 +73,15 @@ end
 alias h "history"
 alias history "history -t \"[%d/%m/%y %T]\""
 alias grep "grep --color=auto"
+
 # Top display in CPU decending order
 alias top "top -o cpu"
+
 alias k "kubectl"
 alias kgp "kubectl get pods|grep $1"
+
+alias gct "gcloud config configurations activate taw"
+alias gck "gcloud config configurations activate default"
 
 #
 # Work specific config 
@@ -82,12 +90,3 @@ alias kgp "kubectl get pods|grep $1"
 set -gx K8S_MANIFESTS_DIR $HOME/Dev/Projects/Work/k8s-manifests
 set -gx K8S_VPN_USERNAME chris.walker
 set -gx DATA_DIR $HOME/Dev/tmp
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.fish
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.fish
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
