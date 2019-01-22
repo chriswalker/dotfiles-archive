@@ -59,6 +59,8 @@ augroup colorextend
   autocmd ColorScheme * call onedark#extend_highlight("Repeat", s:italic)
   autocmd ColorScheme * call onedark#extend_highlight("Label", s:italic)
   autocmd ColorScheme * call onedark#extend_highlight("Conditional", s:italic)
+  autocmd ColorScheme * call onedark#extend_highlight("Folded", s:italic)
+  autocmd ColorScheme * call onedark#extend_highlight("Define", s:italic)
 augroup END
 
 let g:onedark_terminal_italics=1
