@@ -5,7 +5,7 @@ ln -fs ~/dotfiles/misc/.ackrc ~
 ln -fs ~/dotfiles/misc/.tigrc ~
 ln -fs ~/dotfiles/misc/.ripgreprc ~/.config/ripgrep
 
-rm -rf ~/.config/fish ~/.config/nvim
+rm -rf ~/.config/fish ~/.config/nvim ~/.config/kitty
 
 ln -fs ~/dotfiles/fish ~/.config/fish
 ln -fs ~/dotfiles/nvim ~/.config/nvim
