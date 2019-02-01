@@ -77,9 +77,14 @@ alias grep "grep --color=auto"
 # Top display in CPU decending order
 alias top "top -o cpu"
 
+# Nicer tree output - default to ignoring vendor/ and .git/ folders
+alias tree "tree -aC -I \"vendor|.git\""
+
+# Kubectl
 alias k "kubectl"
 alias kgp "kubectl get pods|grep $1"
 
+# GCloud
 alias gct "gcloud config configurations activate taw"
 alias gck "gcloud config configurations activate default"
 
