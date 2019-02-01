@@ -90,3 +90,11 @@ alias gck "gcloud config configurations activate default"
 set -gx K8S_MANIFESTS_DIR $HOME/Dev/Projects/Work/k8s-manifests
 set -gx K8S_VPN_USERNAME chris.walker
 set -gx DATA_DIR $HOME/Dev/tmp
+
+switch (uname)
+case Linux
+  # The next line updates PATH for the Google Cloud SDK.
+  if [ -f '/home/chris/Downloads/google-cloud-sdk/path.fish.inc' ]; 
+    . '/home/chris/Downloads/google-cloud-sdk/path.fish.inc'; 
+  end
+end
