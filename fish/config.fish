@@ -19,7 +19,7 @@ set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep
 
 set -x FZF_DEFAULT_COMMAND 'rg --hidden -l ""'
 
-set -x BAT_CONFIG_PATH '~/dotfiles/misc/bat.conf'
+set -x BAT_CONFIG_PATH $HOME/dotfiles/misc/bat.conf
 
 #
 # Set up various path entries
@@ -82,7 +82,7 @@ alias tree "tree -aC -I \"vendor|.git\""
 
 # Kubectl
 alias k "kubectl"
-alias kgp "kubectl get pods|grep $1"
+alias kgp "kubectl get pods -o wide|grep $1"
 
 # GCloud
 alias gct "gcloud config configurations activate taw"
