@@ -63,30 +63,31 @@ function fish_prompt --description 'Write out the prompt with colours based on b
     # set up some colour variables
     set -g normal (set_color normal)
     set -g blue (set_color --bold blue)
+    set -g cyan (set_color --bold cyan)
     set -g yellow (set_color --bold yellow) 
-    set -g bold_orange (set_color --bold cyan)
     set -g magenta (set_color magenta)
     set -g bold_green (set_color --bold green)
 
+    # Time
     set -g time (date "+%H:%M:%S")
+    printf '%s[%s] ' $cyan $time 
 
-    # Time/user/hostname
-    printf '%s[%s] ' $blue $time 
+    # GCP active account - TODO - bit slow at the moment, so commented out
+    # set -g gcp_active_config (gcloud info --format="value(config.active_config_name)")
+
+    # k8s context + namespace 
+    switch (uname)
+    case Darwin
+      set k8s_ctx (kubectl config current-context)
+      set k8s_ns (kubectl config view -o=jsonpath="{.contexts[?(@.name==\"$k8s_ctx\")].context.namespace}")
+      printf '%s[%s/%s] ' $bold_green $k8s_ctx $k8s_ns
+    end
+
     # pwd
     printf '%s%s%s' $yellow (prompt_pwd) $normal
     # VCS
-    printf '%s%s' (__fish_vcs_prompt)
-
-    switch (uname)
-    case Darwin
-      # Kubernetes ctx/ns output
-      set k8s_ctx (kubectl config current-context)
-      set k8s_ns (kubectl config view -o=jsonpath="{.contexts[?(@.name==\"$k8s_ctx\")].context.namespace}")
-      printf ' %s[%s/%s]\n' $bold_green $k8s_ctx $k8s_ns
-    case Linux
-      printf '\n'
-    end
+    printf '%s%s\n' (__fish_vcs_prompt)
 
     # Second line
-    printf '%s> ' $bold_orange
+    printf '%s>%s ' $cyan $normal
 end
