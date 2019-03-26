@@ -68,10 +68,6 @@ function fish_prompt --description 'Write out the prompt with colours based on b
     set -g magenta (set_color magenta)
     set -g bold_green (set_color --bold green)
 
-    # Time
-    set -g time (date "+%H:%M:%S")
-    printf '%s[%s] ' $cyan $time 
-
     # GCP active account - TODO - bit slow at the moment, so commented out
     # set -g gcp_active_config (gcloud info --format="value(config.active_config_name)")
 
@@ -84,7 +80,7 @@ function fish_prompt --description 'Write out the prompt with colours based on b
     end
 
     # pwd
-    printf '%s%s%s' $yellow (prompt_pwd) $normal
+    printf '%s%s%s' $cyan (prompt_pwd) $normal
     # VCS
     printf '%s%s\n' (__fish_vcs_prompt)
 
