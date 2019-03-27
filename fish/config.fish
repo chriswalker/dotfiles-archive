@@ -80,6 +80,9 @@ alias top "top -o cpu"
 # Nicer tree output - default to ignoring vendor/ and .git/ folders
 alias tree "tree -aC -I \"vendor|.git\""
 
+# Bat instead of plain cat
+alias cat "bat"
+
 # Kubectl
 alias k "kubectl"
 alias kgp "kubectl get pods -o wide|grep $1"
@@ -102,4 +105,17 @@ case Linux
   if [ -f '/home/chris/Downloads/google-cloud-sdk/path.fish.inc' ]; 
     . '/home/chris/Downloads/google-cloud-sdk/path.fish.inc'; 
   end
+end
+
+switch (hostname)
+case zanshin.local
+  # tabtab source for serverless package
+  # uninstall by removing these lines or running `tabtab uninstall serverless`
+  [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.fish
+  # tabtab source for sls package
+  # uninstall by removing these lines or running `tabtab uninstall sls`
+  [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.fish
+  # tabtab source for slss package
+  # uninstall by removing these lines or running `tabtab uninstall slss`
+  [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish
 end
