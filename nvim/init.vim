@@ -36,8 +36,7 @@ Plug 'dag/vim-fish'
 Plug 'ekalinin/Dockerfile.vim'
 " Misc
 Plug 'SirVer/ultisnips'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make' }
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'

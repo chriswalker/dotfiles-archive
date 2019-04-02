@@ -82,20 +82,6 @@ autocmd VimEnter * nested :call tagbar#autoopen(1)
 autocmd FileType * nested :call tagbar#autoopen(0)
 
 "
-" Deoplete
-" -----------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#max_list = 10
-let g:deoplete#max_menu_width = 20
-
-" Switch tab ordering, so from top of completion list down; map to tab/shift-tab
-
-"
-" Deoplete-go
-" -----------------------------------------------------------------------------
-let g:deoplete#sources#go#gocode_binary=$GOPATH.'/bin/gocode'
-
-"
 " Neosnippets 
 " -----------------------------------------------------------------------------
 " Use Tab to jump between placehoders
