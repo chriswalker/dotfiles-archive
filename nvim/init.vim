@@ -12,7 +12,6 @@ endfunction
 " ----------------------------------------------------------------------------
 call plug#begin('~/.config/nvim/plugged')
 " UI & theming
-Plug 'chriswalker/vim-orbital'
 Plug 'joshdick/onedark.vim'
 " Development
 "Plug 'misterbuckley/vim-definitive'
@@ -21,7 +20,6 @@ Plug 'fatih/vim-go'
 Plug 'sebdah/vim-delve'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-fugitive'
-Plug 'ekalinin/Dockerfile.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
@@ -35,6 +33,7 @@ Plug 'elzr/vim-json'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'dag/vim-fish'
+Plug 'ekalinin/Dockerfile.vim'
 " Misc
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
