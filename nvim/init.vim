@@ -14,7 +14,6 @@ call plug#begin('~/.config/nvim/plugged')
 " UI & theming
 Plug 'joshdick/onedark.vim'
 " Development
-"Plug 'misterbuckley/vim-definitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
 Plug 'sebdah/vim-delve'
@@ -35,6 +34,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'dag/vim-fish'
 Plug 'ekalinin/Dockerfile.vim'
 " Misc
+Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'ervandew/supertab'
