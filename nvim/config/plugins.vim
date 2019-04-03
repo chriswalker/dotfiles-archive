@@ -146,3 +146,8 @@ let g:gitgutter_sign_removed = '┃'
 if GetOS() =~ "Darwin"
   nmap <silent> <leader>d <Plug>DashSearch
 endif
+
+"
+" coc.vim
+" -----------------------------------------------------------------------------
+map <c-]> <plug>(coc-definition)

@@ -23,7 +23,7 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 Plug 'radenling/vim-dispatch-neovim'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 if GetOS() =~ "Darwin"
   Plug 'rizzatti/dash.vim'
 endif
