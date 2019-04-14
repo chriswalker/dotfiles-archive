@@ -13,9 +13,7 @@ hi User4 guibg='#B48EAD' guifg='#3B4252'
 " COMMAND
 hi User5 guibg='#D08770' guifg='#3B4252'
 " Current filename
-hi User6 guibg='#4C566A' guifg='#EBCB8B'
+hi User6 guibg='#3B4252' guifg='#EBCB8B'
 " Modified
-hi User7 guibg='#4C566A' guifg='#88C0D0'
-" White text
-hi User8 guibg='#4C566A' guifg='#ECEFF4'
+hi User7 guibg='#3B4252' guifg='#88C0D0'
 
