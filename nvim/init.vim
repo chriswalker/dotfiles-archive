@@ -13,6 +13,9 @@ endfunction
 call plug#begin('~/.config/nvim/plugged')
 " UI & theming
 Plug 'joshdick/onedark.vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'chriswalker/nord-vim'
+
 " Development
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'

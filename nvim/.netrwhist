@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/chris/dotfiles/nvim/plugged/onedark.vim'
+let g:netrw_dirhist_2='/Users/chris/dotfiles/nvim/plugged/onedark.vim/autoload'
+let g:netrw_dirhist_3='/Users/chris/Dev/Go/src/github.com/karhoo/onboarding-cli'
+let g:netrw_dirhist_4='/Users/chris/Dev/Go/src/github.com/karhoo/onboarding-cli/pkg'
+let g:netrw_dirhist_5='/Users/chris/dotfiles/nvim/plugged/nord-vim/colors'

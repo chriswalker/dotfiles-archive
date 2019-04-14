@@ -6,7 +6,7 @@
 set noshowmode
 
 " Get colours for current theme
-source $HOME/.config/nvim/config/statusline-onedark.vim
+source $HOME/.config/nvim/config/statusline-nord.vim
 
 " Mode map lists mode code against [text output] a highlight group above for
 " fg/bg colours
@@ -26,7 +26,7 @@ function! StatuslineMode() abort
 endfunction
 
 function! Filepath() abort
-  let path = expand('%:.:h')
+  let path = expand('%:h')
   let filename = expand('%:t')
   return len(l:filename) > 0 ? printf('%s/%%6*%s%%*', path, filename) : '[No file]'
 endfunction
