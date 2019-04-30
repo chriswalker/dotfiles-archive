@@ -18,7 +18,7 @@ let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_fmt_command="goimports"
 let g:go_auto_sameids=1
-let g:go_metalinter_autosave=1
+" let g:go_metalinter_autosave=1
 let g:go_auto_type_info=1
 let g:go_list_height=10
 let g:go_def_mapping_enabled=0
@@ -32,12 +32,12 @@ autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 " Map <leader>a to GoAlternate
 autocmd FileType go nmap <leader>a  <Plug>(go-alternate) 
 
-let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
+"let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
 
 "
 " Tagbar
 " -----------------------------------------------------------------------------
-"nmap <leader>b :TagbarToggle<CR>
+nmap <leader>b :TagbarToggle<CR>
 
 " General UI config
 let g:tagbar_left=1
@@ -152,3 +152,9 @@ endif
 " coc.vim
 " -----------------------------------------------------------------------------
 map <c-]> <plug>(coc-definition)
+
+" Override default colours for sign gutter
+hi CocErrorSign guifg=#BF616A
+hi CocErrorLine guifg=#BF616A
+hi CocWarningSign guifg=#EBCB8B
+hi CocWarningLine guifg=#EBCB8B
