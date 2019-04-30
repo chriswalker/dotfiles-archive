@@ -12,10 +12,7 @@ endfunction
 " ----------------------------------------------------------------------------
 call plug#begin('~/.config/nvim/plugged')
 " UI & theming
-Plug 'joshdick/onedark.vim'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'chriswalker/nord-vim'
-
 " Development
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
@@ -23,6 +20,7 @@ Plug 'sebdah/vim-delve'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
+" Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 Plug 'radenling/vim-dispatch-neovim'
@@ -32,7 +30,6 @@ if GetOS() =~ "Darwin"
 endif
 " Filetypes
 Plug 'elzr/vim-json'
-Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'dag/vim-fish'
 Plug 'ekalinin/Dockerfile.vim'
