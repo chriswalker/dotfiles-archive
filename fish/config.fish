@@ -95,7 +95,7 @@ alias gck "gcloud config configurations activate default"
 # Work specific config 
 # TODO
 # -----------------------------------------------------------------------------
-set -gx K8S_MANIFESTS_DIR $HOME/Dev/Projects/Work/k8s-manifests
+set -gx K8S_MANIFESTS_DIR $HOME/Dev/Projects/karhoo/k8s-manifests
 set -gx K8S_VPN_USERNAME chris.walker
 set -gx DATA_DIR $HOME/Dev/tmp
 
