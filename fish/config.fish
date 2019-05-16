@@ -92,6 +92,9 @@ alias kgp "kubectl get pods -o wide|grep $1"
 alias gct "gcloud config configurations activate taw"
 alias gck "gcloud config configurations activate default"
 
+# todo.sh
+alias t "todo.sh -d $HOME/dotfiles/misc/todo.conf"
+
 #
 # Work specific config 
 # TODO
