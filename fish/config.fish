@@ -48,6 +48,7 @@ case Darwin
   set PATH ~/Dev/Work/google-cloud-sdk/bin $PATH
 end
 
+set PATH ~/Dev/Projects/karhoo/k-tools/bin $PATH
 
 # UI tweaks
 # -----------------------------------------------------------------------------
