@@ -88,6 +88,10 @@ alias cat "bat"
 alias k "kubectl"
 alias kgp "kubectl get pods -o wide|grep $1"
 
+# Docker
+alias d "docker"
+alias dps "docker ps"
+
 # GCloud
 alias gct "gcloud config configurations activate taw"
 alias gck "gcloud config configurations activate default"
