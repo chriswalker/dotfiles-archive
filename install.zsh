@@ -4,6 +4,7 @@ ln -fs ~/dotfiles/tmux/.tmux.conf ~
 ln -fs ~/dotfiles/misc/.ackrc ~
 ln -fs ~/dotfiles/misc/.tigrc ~
 ln -fs ~/dotfiles/misc/.ripgreprc ~/.config/ripgrep
+ln -fs ~/dotfiles/misc/kk ~/.kk
 
 rm -rf ~/.config/fish ~/.config/nvim ~/.config/kitty
 
