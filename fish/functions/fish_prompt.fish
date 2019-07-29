@@ -72,8 +72,9 @@ function fish_prompt --description 'Write out the prompt with colours based on b
     # set -g gcp_active_config (gcloud info --format="value(config.active_config_name)")
 
     # k8s context + namespace 
-    switch (uname)
-    case Darwin
+    if test -e $GOBIN/kk
+      printf '[%s] ' (kk --prompt)
+    else
       set k8s_ctx (kubectl config current-context)
       set k8s_ns (kubectl config view -o=jsonpath="{.contexts[?(@.name==\"$k8s_ctx\")].context.namespace}")
       printf '%s[%s/%s] ' $bold_green $k8s_ctx $k8s_ns
