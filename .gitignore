@@ -7,3 +7,4 @@ nvim/plugged
 nvim/autoload
 .zsh/work.zsh
 fish/fishd.*
+fish/fish_variables
