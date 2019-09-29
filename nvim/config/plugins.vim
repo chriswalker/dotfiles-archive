@@ -34,6 +34,9 @@ autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 
 "let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
 
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
 "
 " Tagbar
 " -----------------------------------------------------------------------------
@@ -151,10 +154,18 @@ endif
 "
 " coc.vim
 " -----------------------------------------------------------------------------
-map <c-]> <plug>(coc-definition)
+" map <c-]> <plug>(coc-definition)
 
-" Override default colours for sign gutter
-hi CocErrorSign guifg=#BF616A
-hi CocErrorLine guifg=#BF616A
-hi CocWarningSign guifg=#EBCB8B
-hi CocWarningLine guifg=#EBCB8B
+" " Override default colours for sign gutter
+" hi CocErrorSign guifg=#BF616A
+" hi CocErrorLine guifg=#BF616A
+" hi CocWarningSign guifg=#EBCB8B
+" hi CocWarningLine guifg=#EBCB8B
+
+"
+" Deoplete
+" -----------------------------------------------------------------------------
+"  let g:deoplete#enable_at_startup = 1
+"  let g:deoplete#max_list = 10
+"  let g:deoplete#max_menu_width = 20
+

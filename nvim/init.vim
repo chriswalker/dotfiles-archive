@@ -20,11 +20,9 @@ Plug 'sebdah/vim-delve'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
-" Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 Plug 'radenling/vim-dispatch-neovim'
-"Plug 'w0rp/ale'
 if GetOS() =~ "Darwin"
   Plug 'rizzatti/dash.vim'
 endif
@@ -36,7 +34,7 @@ Plug 'ekalinin/Dockerfile.vim'
 " Misc
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" Plug 'Shougo/deoplete.nvim'
 Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -86,6 +84,11 @@ set shiftround
 
 " Tree-style listing in netrw
 let g:netrw_liststyle=3
+
+" Display completion menu if only one option, don't automatically insert
+set completeopt+=menuone,noinsert
+" Invoke omni on pressing '.' in go files
+au filetype go inoremap <buffer> . .<C-x><C-o>
 
 "
 " Load other config files
