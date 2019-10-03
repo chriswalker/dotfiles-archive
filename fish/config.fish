@@ -84,9 +84,10 @@ alias tree "tree -aC -I \"vendor|.git\""
 # Bat instead of plain cat
 alias cat "bat"
 
-# Kubectl
+# k8s aliases; see also ./fish/functions
 alias k "kubectl"
-alias kgp "kubectl get pods -o wide|grep $1"
+alias kl "kubectl logs -f"
+alias kdp "kubectl describe pod $1"
 
 # Docker
 alias d "docker"
