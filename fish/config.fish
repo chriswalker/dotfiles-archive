@@ -26,21 +26,25 @@ set -x BAT_CONFIG_PATH $HOME/dotfiles/misc/bat.conf
 # -----------------------------------------------------------------------------
 
 # Golang
-switch (uname)
-case Linux
-  set -g GOROOT /usr/local/go
-case Darwin
-  set -g GOROOT /usr/local/Cellar/go/1.8/libexec
+if test -e ~/Dev/Go
+  set -x GOPATH ~/Dev/Go
+  set -x GOBIN $GOPATH/bin
+
+  switch (uname)
+  case Linux
+    set -g GOROOT /usr/local/go
+  case Darwin
+    set -g GOROOT /usr/local/Cellar/go/1.8/libexec
+  end
+
+  # Update path
+  set PATH $GOROOT/bin $GOBIN $PATH
 end
 
-set -x GOPATH ~/Dev/Go
-set -x GOBIN $GOPATH/bin
+set PATH ~/bin $PATH
 
 # Data directory for docker volume mounts etc
 set -g DATA_HOME ~/Dev/data
-
-# Update path
-set PATH $GOROOT/bin $GOBIN ~/bin $PATH
 
 # GCP - TODO: Change for Linux as well
 switch (uname)
