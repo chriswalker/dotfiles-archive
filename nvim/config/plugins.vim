@@ -34,6 +34,7 @@ autocmd FileType go nmap <leader>a  <Plug>(go-alternate)
 
 "let g:go_metalinter_enabled = ['vet', 'golint', 'gosimple', 'errcheck']
 
+let g:go_def_mapping_enabled=1
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
