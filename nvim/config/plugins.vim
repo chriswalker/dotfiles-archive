@@ -146,24 +146,6 @@ let g:gitgutter_sign_modified = '┃'
 let g:gitgutter_sign_removed = '┃'
 
 "
-" dash.vim
-" -----------------------------------------------------------------------------
-if GetOS() =~ "Darwin"
-  nmap <silent> <leader>d <Plug>DashSearch
-endif
-
-"
-" coc.vim
-" -----------------------------------------------------------------------------
-" map <c-]> <plug>(coc-definition)
-
-" " Override default colours for sign gutter
-" hi CocErrorSign guifg=#BF616A
-" hi CocErrorLine guifg=#BF616A
-" hi CocWarningSign guifg=#EBCB8B
-" hi CocWarningLine guifg=#EBCB8B
-
-"
 " Deoplete
 " -----------------------------------------------------------------------------
 "  let g:deoplete#enable_at_startup = 1

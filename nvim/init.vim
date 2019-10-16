@@ -23,9 +23,6 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 Plug 'radenling/vim-dispatch-neovim'
-if GetOS() =~ "Darwin"
-  Plug 'rizzatti/dash.vim'
-endif
 " Filetypes
 Plug 'elzr/vim-json'
 Plug 'stephpy/vim-yaml'
