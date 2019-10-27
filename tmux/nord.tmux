@@ -7,10 +7,10 @@ set -g status-fg colour7
 set -g status-bg "#3B4252"
 
 # Message/Command line
-set -g message-style fg=#2E3440,,bg=#8FBCBB,bold
+set -g message-style fg="#2E3440",bg="#8FBCBB",bold
 
 # Mode/Cut/Paste
-set -g mode-style fg=#2E3440,,bg=#8FBCBB,bold
+set -g mode-style fg="#2E3440",bg="#8FBCBB",bold
 
 # Active pane foreground
 set -g pane-active-border-fg "#4C566A"
