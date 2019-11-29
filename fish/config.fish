@@ -19,7 +19,7 @@ set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep
 
 set -x FZF_DEFAULT_COMMAND 'rg --hidden -l ""'
 
-set -x BAT_CONFIG_PATH $HOME/dotfiles/misc/bat.conf
+set -x BAT_CONFIG_PATH $HOME/dotfiles/misc/bat/bat.conf
 
 #
 # Set up various path entries
