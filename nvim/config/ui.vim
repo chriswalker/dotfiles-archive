@@ -33,6 +33,8 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 " Set height of completions menus
 set pumheight=10
 
+set mouse=a
+
 " Theme settings 
 " -----------------------------------------------------------------------------
 set background=dark
