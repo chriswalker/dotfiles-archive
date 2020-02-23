@@ -15,11 +15,12 @@ set -U EDITOR nvim
 # Vi(m) bindings on the prompt
 set fish_key_bindings fish_vi_key_bindings
 
+# Config paths for tools 
 set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep
-
-set -x FZF_DEFAULT_COMMAND 'rg --hidden -l ""'
-
 set -x BAT_CONFIG_PATH $HOME/dotfiles/misc/bat/bat.conf
+
+# fzf defaults
+set -x FZF_DEFAULT_COMMAND 'rg --hidden -l ""'
 
 #
 # Set up various path entries
