@@ -19,8 +19,22 @@ set fish_key_bindings fish_vi_key_bindings
 set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep
 set -x BAT_CONFIG_PATH $HOME/dotfiles/misc/bat/bat.conf
 
-# fzf defaults
+#
+# fzf configuration
+# -----------------------------------------------------------------------------
+
+# Use ripgrep in searches
 set -x FZF_DEFAULT_COMMAND 'rg --hidden -l ""'
+
+# Set Nord theming
+set -x FZF_DEFAULT_OPTS '
+    --color fg:#D8DEE9,bg:#2E3440,hl:#88C0D0,fg+:#D8DEE9,hl+:#8F616A
+    --color pointer:#BF616A,info:#88C0D0,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B
+    --color gutter:#2E3440
+'
+
+# Show tree of selection in directory matching
+set -x FZF_ALT_C_OPTS "--preview 'tree -C {} | head -200'"
 
 #
 # Set up various path entries
