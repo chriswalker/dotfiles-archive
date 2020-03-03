@@ -13,8 +13,8 @@ set -g message-style fg="#2E3440",bg="#8FBCBB",bold
 set -g mode-style fg="#2E3440",bg="#8FBCBB",bold
 
 # Active pane foreground
-set -g pane-active-border-fg "#4C566A"
-set -g pane-border-fg "#3B4252"
+set -g pane-active-border-style fg="#4C566A"
+set -g pane-border-style fg="#3B4252"
 
 # Left 
 set -g status-left-length 30
