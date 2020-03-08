@@ -33,6 +33,7 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 " Set height of completions menus
 set pumheight=10
 
+" Allow mouse usage
 set mouse=a
 
 " Theme settings 
@@ -44,6 +45,15 @@ let g:nord_italic_comments=1
 let g:nord_underline=1
 let g:nord_italic = 1
 let g:nord_cursor_line_number_background = 1
+
+augroup nord-theme-overrides
+  autocmd!
+  " Override fold background
+  autocmd ColorScheme nord highlight Folded guibg=#2e3440                    " bg=Nord0
+  " Override statusline fore/background
+  autocmd ColorScheme nord highlight StatusLine guifg=#d8dee9 guibg=#3b4252  " fg=Nord4, bg=Nord1
+augroup END
+
 colorscheme nord
 
 syntax on

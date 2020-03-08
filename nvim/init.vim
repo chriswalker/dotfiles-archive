@@ -12,13 +12,14 @@ endfunction
 " ----------------------------------------------------------------------------
 call plug#begin('~/.config/nvim/plugged')
 " UI & theming
-Plug 'chriswalker/nord-vim'
+Plug 'arcticicestudio/nord-vim'
 " Development
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
 Plug 'sebdah/vim-delve'
 Plug 'tpope/vim-fugitive'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 Plug 'radenling/vim-dispatch-neovim'
