@@ -11,13 +11,14 @@ source $HOME/.config/nvim/config/statusline-nord.vim
 " Mode map lists mode code against [text output] a highlight group above for
 " fg/bg colours
 let s:mode_map = {
-  \  'n':      { 'text': 'NORMAL',  'hi': '1' },
-  \  'i':      { 'text': 'INSERT',  'hi': '2' },
-  \  'R':      { 'text': 'REPLACE', 'hi': '3' },
-  \  'v':      { 'text': 'VISUAL',  'hi': '4' },
-  \  'V':      { 'text': 'V-LINE',  'hi': '4' },
-  \  "\<C-v>": { 'text': 'V-BLOCK', 'hi': '4' },
-  \  'c':      { 'text': 'COMMAND', 'hi': '5' },
+  \  'n':      { 'text': 'NORMAL',   'hi': '1' },
+  \  'i':      { 'text': 'INSERT',   'hi': '2' },
+  \  'R':      { 'text': 'REPLACE',  'hi': '3' },
+  \  'v':      { 'text': 'VISUAL',   'hi': '4' },
+  \  'V':      { 'text': 'V-LINE',   'hi': '4' },
+  \  "\<C-v>": { 'text': 'V-BLOCK',  'hi': '4' },
+  \  'c':      { 'text': 'COMMAND',  'hi': '5' },
+  \  't':      { 'text': 'TERMINAL', 'hi': '6' }
 \ }
 
 function! StatuslineMode() abort
@@ -28,7 +29,7 @@ endfunction
 function! Filepath() abort
   let path = expand('%:h')
   let filename = expand('%:t')
-  return len(l:filename) > 0 ? printf('%s/%%6*%s%%*', path, filename) : '[No file]'
+  return len(l:filename) > 0 ? printf('%s/%%7*%s%%*', path, filename) : '[No file]'
 endfunction
 
 function! GitBranch() abort
@@ -46,7 +47,7 @@ function! GenerateStatusLine(mode) abort
     let line .= GitBranch()
     let line .= ' '
     let line .= Filepath()
-    let line .= ' %7*%m%*'
+    let line .= ' %8*%m%*'
 
     let line .='%='
 
