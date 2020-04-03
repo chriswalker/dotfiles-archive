@@ -50,9 +50,11 @@ let g:nord_bold_vertical_split_line = 1
 augroup nord-theme-overrides
   autocmd!
   " Override fold background
-  autocmd ColorScheme nord highlight Folded guibg=#2e3440                    " bg=Nord0
+  autocmd ColorScheme nord highlight Folded guibg=#2E3440                    " bg=Nord0
   " Override statusline fore/background
-  autocmd ColorScheme nord highlight StatusLine guifg=#d8dee9 guibg=#3b4252  " fg=Nord4, bg=Nord1
+  autocmd ColorScheme nord highlight StatusLine guifg=#D8DEE9 guibg=#3B4252  " fg=Nord4, bg=Nord1
+  " Override Terminal Cursor colour when in a terminal
+  autocmd ColorScheme nord highlight TermCursorNC guibg=#88C0D0              " fg=Nord8
 augroup END
 
 colorscheme nord
