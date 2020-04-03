@@ -115,28 +115,31 @@ map <leader>rg :Rg<CR>
 noremap <silent> <leader>grc :Commits<CR>
 noremap <silent> <leader>gbc :BCommits<CR>
 
-
-let g:fzf_layout = { 'down': '~20%' }
-
 " Customize fzf colors to match theme
 let g:fzf_colors = {
-      \ 'bg':          ['bg', 'CursorLine'],
-      \ 'bg+':         ['bg', 'CursorLine'],
-      \ 'info':        ['fg', 'String'],
+      \ 'bg':          ['bg', 'Normal'],
+      \ 'bg+':         ['bg', 'Normal'],
+      \ 'info':        ['fg', 'Function'],
       \ 'prompt':      ['fg', 'Function', 'Bold'],
-      \ 'marker':      ['fg', 'Float', 'Bold'],
-      \ 'hl':          ['fg', 'Float', 'Bold'],
-      \ 'hl+':         ['fg', 'Float', 'Bold'],
+      \ 'pointer':     ['fg', 'SpellBad', 'Bold'],
+      \ 'hl':          ['fg', 'Function', 'Bold'],
+      \ 'hl+':         ['fg', 'SpellBad', 'Bold'],
       \ 'header':      ['bg', 'CursorLine']
 \ }
 
 autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noruler
+autocmd  FileType fzf set laststatus=0 noruler 
   \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
 " Files command with preview window
+
+let g:fzf_preview_opts = { 'options': [ '--layout=reverse' ] }
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(g:fzf_preview_opts), <bang>0)
+
+" let g:fzf_layout = { 'down': '~20%' }
+" Specify a floating window for fzf
+let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
 
 "
 " gitgutter
@@ -151,4 +154,3 @@ let g:gitgutter_sign_removed = '┃'
 "  let g:deoplete#enable_at_startup = 1
 "  let g:deoplete#max_list = 10
 "  let g:deoplete#max_menu_width = 20
-
