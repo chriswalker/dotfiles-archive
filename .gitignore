@@ -9,3 +9,4 @@ nvim/autoload
 fish/fishd.*
 fish/fish_variables
 misc/kk/history.yaml
+kak/plugins
