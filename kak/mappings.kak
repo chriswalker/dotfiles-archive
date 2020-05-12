@@ -32,8 +32,9 @@ hook global InsertCompletionHide .* %{
 # -----------------------------------------------------------------------------
  
 # Show implementations
-# map -docstring "LSP - Show implementations" global user i :lsp-implementation<ret>
-# map -docstring "LSP - Enter lsp user mode" global user l :enter-user-mode lsp<ret>
+map -docstring "LSP - Show implementations" global user i :lsp-implementation<ret>
+map -docstring "LSP - Show references" global user r :lsp-references<ret>
+map -docstring "LSP - Enter LSP user mode" global user l :enter-user-mode<space>lsp<ret>
 
 # Go-specific mappings
 # -----------------------------------------------------------------------------
