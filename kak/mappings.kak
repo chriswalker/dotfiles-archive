@@ -28,15 +28,35 @@ hook global InsertCompletionHide .* %{
     unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p>
 } 
 
+# See:
+# https://github.com/mawww/kakoune/wiki/Selections#how-to-make-x-select-lines-downward-and-x-select-lines-upward
+define-command -params 1 extend-line-down %{
+    exec "<a-:>%arg{1}X"
+}
+define-command -params 1 extend-line-up %{
+    exec "<a-:><a-;>%arg{1}K<a-;>"
+    try %{
+        exec -draft ';<a-K>\n<ret>'
+        exec X
+    }
+    exec '<a-;><a-X>'
+}
+# nx selected n lines down
+map global normal x ':extend-line-down %val{count}<ret>'
+# nX select n lines above
+map global normal X ':extend-line-up %val{count}<ret>'
+
 # kak-lsp mappings
 # -----------------------------------------------------------------------------
  
 # Show implementations
 map -docstring "LSP - Show implementations" global user i :lsp-implementation<ret>
+# Show references
 map -docstring "LSP - Show references" global user r :lsp-references<ret>
+# Switch to LSP user mode
 map -docstring "LSP - Enter LSP user mode" global user l :enter-user-mode<space>lsp<ret>
 
-# Go-specific mappings
+# Go-specific mappings (Go functionality under construction)
 # -----------------------------------------------------------------------------
 
 # Switch to alterntive file (e.g. foo.go to foo_test.go)
