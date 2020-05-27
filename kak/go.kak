@@ -11,7 +11,57 @@
     # Run unit tests in tmux split?
     # Show test coverage - spec ranges?
 
-# Switch to alternate file (e.g. from foo.go to foo_test.go)
+# Additional Go syntax highlighting (test coverge, dependency files)
+# -----------------------------------------------------------------------------
+provide-module go-deps-syntax %{
+    # add-highlighter shared/go-deps-syntax regions
+
+    # Dependency file highlighters (go.mod/sum files)
+    add-highlighter shared/godeps regions
+    # Comments
+    add-highlighter shared/godeps/comments region "//" '\n' fill comment
+    # Hash
+    add-highlighter shared/godeps/hash region "h1:" '\n' fill yellow
+
+	add-highlighter shared/godeps/default default-region group
+    # Module keywords
+    add-highlighter shared/godeps/default/ regex go|module|require|replace|exclude 0:keyword
+    # Versions/pseudo-versions etc
+    add-highlighter shared/godeps/default/ regex v(\d+\.)?(\d+\.)?(\d+)([^\s]+|[^\n]+) 0:cyan
+    # Dependencies - this specifically matches dependencies at the start of the line (prefixed by
+    # tab chars) which has the nice effect of leaving replacements & exclusions un-highlighted
+    add-highlighter shared/godeps/default/ regex \t?([a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+)([^\s]+) 0:green
+    # Replace symbol
+    add-highlighter shared/godeps/default/ regex (=>) 0:yellow
+    
+	
+    # Define faces for test coverage output; overridable
+    # set-face global Covered green
+    # set-face global NotCovered red
+    # set-face global Uninstrumented blue
+    
+    # # Test coverge highlighters
+    # add-highlighter shared/go/coverage group
+    # add-highlighter shared/go/coverage/ fill Uninstrumented
+    # add-highlighter shared/go/coverage/ ranges go_covered_range
+    # add-highlighter shared/go/coverage/ ranges go_notcovered_range
+}
+
+hook global WinSetOption filetype=(godepfile) %{
+    require-module go-deps-syntax
+
+    add-highlighter window/godeps ref godeps
+
+    hook -once -always window WinSetOption filetype=.* %{
+        remove-highlighter window/godeps
+    }
+}
+
+hook global BufCreate .+\.(mod|sum) %{
+    set-option buffer filetype godepfile
+}
+
+# Switch to alternate file (e.g. rom foo.go to foo_test.go, go.mod to go.sum)
 # -----------------------------------------------------------------------------
 define-command go-alternate -docstring "(Go) Switch to alternate file" %{
     evaluate-commands %sh{
@@ -23,6 +73,10 @@ define-command go-alternate -docstring "(Go) Switch to alternate file" %{
         elif [[ "${kak_bufname}" =~ \.go$ ]]; then
             file_root=${kak_bufname%.go*}
             file_suffix='_test.go'
+        elif [[ "${kak_buffile}" =~ go\.mod$ ]]; then
+            file_suffix='go.sum'
+        elif [[ "${kak_buffile}" =~ go\.sum$ ]]; then
+            file_suffix='go.mod'
         else
             printf "%s\n" "fail 'Not a Go file'"
  	        exit
@@ -80,8 +134,8 @@ declare-option -hidden range-specs go_covered_range
 declare-option -hidden range-specs go_notcovered_range
 
 # Define faces for test coverage output
-set-face global Covered green+b
-set-face global NotCovered red+b
+set-face global Covered green
+set-face global NotCovered red
 set-face global Uninstrumented blue
 
 # Display test coverage in the current buffer
