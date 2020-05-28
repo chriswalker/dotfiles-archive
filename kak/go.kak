@@ -3,65 +3,64 @@
 #
 # Will likely turn this into a proper Kakoune plugin at some point, so
 # mappings etc are defined in other .kak files
-# -----------------------------------------------------------------------------
-
+#
 # Note some Go LSP-related options defined in plugins.kak, in the kak-lsp block
-
-# Ideas
-    # Run unit tests in tmux split?
-    # Show test coverage - spec ranges?
-
-# Additional Go syntax highlighting (test coverge, dependency files)
 # -----------------------------------------------------------------------------
-provide-module go-deps-syntax %{
-    # add-highlighter shared/go-deps-syntax regions
 
-    # Dependency file highlighters (go.mod/sum files)
-    add-highlighter shared/godeps regions
-    # Comments
-    add-highlighter shared/godeps/comments region "//" '\n' fill comment
-    # Hash
-    add-highlighter shared/godeps/hash region "h1:" '\n' fill yellow
+# go-extra-syntax provides ddditional Go syntax highlighting for test coverge
+# and Go module files
+# -----------------------------------------------------------------------------
+provide-module go-extra-syntax %{
+    #
+    # Module files (go.mod and go.sum)
+    #
+    set-face global Hash keyword
+    set-face global Version cyan
+    set-face global Dependency green
+    set-face global ReplaceOperator yellow
 
-	add-highlighter shared/godeps/default default-region group
-    # Module keywords
-    add-highlighter shared/godeps/default/ regex go|module|require|replace|exclude 0:keyword
-    # Versions/pseudo-versions etc
-    add-highlighter shared/godeps/default/ regex v(\d+\.)?(\d+\.)?(\d+)([^\s]+|[^\n]+) 0:cyan
-    # Dependencies - this specifically matches dependencies at the start of the line (prefixed by
-    # tab chars) which has the nice effect of leaving replacements & exclusions un-highlighted
-    add-highlighter shared/godeps/default/ regex \t?([a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+)([^\s]+) 0:green
-    # Replace symbol
-    add-highlighter shared/godeps/default/ regex (=>) 0:yellow
+    add-highlighter shared/gomod regions
+    add-highlighter shared/gomod/comments region "//" '\n' fill comment
+    add-highlighter shared/gomod/hash region "h1:" '\n' fill Hash
+
+	add-highlighter shared/gomod/default default-region group
+    add-highlighter shared/gomod/default/ regex ^go\s|module|require|replace|exclude 0:keyword
+    add-highlighter shared/gomod/default/ regex \sv(\d+\.)?(\d+\.)?(\d+)([^\s]+|[\n]+) 0:Version
+    # This specifically matches dependencies at the start of the line (prefixed by tab chars)
+    # which has the nice effect of leaving replacements & exclusions un-highlighted
+    add-highlighter shared/gomod/default/ regex ([\t]|^)([a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+)([^\s]+) 0:Dependency
+    add-highlighter shared/gomod/default/ regex (=>) 0:ReplaceOperator
     
-	
-    # Define faces for test coverage output; overridable
-    # set-face global Covered green
-    # set-face global NotCovered red
-    # set-face global Uninstrumented blue
+    #
+    # Test coverage
+    #
+    set-face global Covered green
+    set-face global NotCovered red
+    set-face global Uninstrumented blue
     
-    # # Test coverge highlighters
-    # add-highlighter shared/go/coverage group
-    # add-highlighter shared/go/coverage/ fill Uninstrumented
-    # add-highlighter shared/go/coverage/ ranges go_covered_range
-    # add-highlighter shared/go/coverage/ ranges go_notcovered_range
+    add-highlighter shared/gocov group
+    add-highlighter shared/gocov/ fill Uninstrumented
+    add-highlighter shared/gocov/ ranges go_covered_range
+    add-highlighter shared/gocov/ ranges go_notcovered_range
 }
 
-hook global WinSetOption filetype=(godepfile) %{
-    require-module go-deps-syntax
+# Set gomodfile filetype
+hook global BufCreate .*/?go\.(mod|sum) %{
+    set-option buffer filetype gomodfile
+}
 
-    add-highlighter window/godeps ref godeps
+# Add Go module highlighters if this is a modules file
+hook global WinSetOption filetype=(gomodfile) %{
+    require-module go-extra-syntax
+
+    add-highlighter window/gomod ref gomod
 
     hook -once -always window WinSetOption filetype=.* %{
-        remove-highlighter window/godeps
+        remove-highlighter window/gomod
     }
 }
 
-hook global BufCreate .+\.(mod|sum) %{
-    set-option buffer filetype godepfile
-}
-
-# Switch to alternate file (e.g. rom foo.go to foo_test.go, go.mod to go.sum)
+# Switch to alternate file (e.g. rom foo.go -> foo_test.go, go.mod -> go.sum)
 # -----------------------------------------------------------------------------
 define-command go-alternate -docstring "(Go) Switch to alternate file" %{
     evaluate-commands %sh{
@@ -93,28 +92,15 @@ define-command go-alternate -docstring "(Go) Switch to alternate file" %{
     }
 }
 
-# Run tests in current package
+# [WIP] Run tests in current package
 # -----------------------------------------------------------------------------   
 define-command go-test -docstring "(Go) Run tests in current package" %{
-    # Get current package or directory
-    #
-    # Run tests with -json flag to parse results
-    #
-    # Output results into *test* fifo buffer
-    #    Highlighters applied to output (e.g. PASS/FAIL?)
-    #
-    # Echo general results/info box etc?
-    # 
-    # Phase 1: run tests in current package/folder & output
-    #          to *tests* fifo buffer
     evaluate-commands %sh{
         # Get diectory current buffer file is in & filename
         # bufname
         cur_dir=${kak_buffile%/*}
 
-        # TODO - temporary
         go test ${cur_dir} > /dev/null 2>&1
-        # Get output, put into fifo buffer + apply highlighters
 
         if [ $? == 0 ]; then
             printf "%s\n" "echo -markup '{green}Tests passed'"
@@ -125,26 +111,24 @@ define-command go-test -docstring "(Go) Run tests in current package" %{
 }
 
 # Whether coverage highlights are being displayed
-# TODO: Rename this, not quite happy with it
-declare-option bool go_coverage false
-
+declare-option bool go_display_coverage false
 # Range spec for code covered by a test
 declare-option -hidden range-specs go_covered_range
 # Range spec fof code not covered by a test
 declare-option -hidden range-specs go_notcovered_range
 
-# Define faces for test coverage output
-set-face global Covered green
-set-face global NotCovered red
-set-face global Uninstrumented blue
-
 # Display test coverage in the current buffer
 # -----------------------------------------------------------------------------
 define-command go-coverage -docstring "(Go) Show test coverage for the currently open file" %{
     evaluate-commands %sh{
+		if [[ ! "${kak_bufname}" =~ _\.go$ ]]; then
+            printf "%s\n" "fail 'Not a Go file'"
+			exit
+		fi
+
         # If already displaying coverage
-        if [ "${kak_opt_go_coverage}" = "true" ]; then
-            printf "%s\n" "set-option window go_coverage false"
+        if [ "${kak_opt_go_display_coverage}" = "true" ]; then
+            printf "%s\n" "set-option window go_display_coverage false"
             exit
         fi
         
@@ -170,22 +154,17 @@ define-command go-coverage -docstring "(Go) Show test coverage for the currently
 		
 		# Clean up and apply highlighters
 		rm -f cover.out
-        printf "%s\n" "set-option window go_coverage true"
+        printf "%s\n" "set-option window go_display_coverage true"
     }
 }
 
-# Create shared group for coverage highlighters, and add them to it
-add-highlighter shared/test_coverage group
-add-highlighter shared/test_coverage/ fill Uninstrumented
-add-highlighter shared/test_coverage/ ranges go_covered_range
-add-highlighter shared/test_coverage/ ranges go_notcovered_range
-
 # Hooks to apply coverage highlights based on coverage option value
-hook global WinSetOption go_coverage=true %{
-    add-highlighter window/test_coverage ref test_coverage
+hook global WinSetOption go_display_coverage=true %{
+    require-module go-extra-syntax
 
-	# Remove highlighters
-    hook -once -always window WinSetOption go_coverage=false %{
-        remove-highlighter window/test_coverage
+	add-highlighter window/gocov ref gocov
+
+    hook -once -always window WinSetOption go_display_coverage=false %{
+        remove-highlighter window/gocov
 	}
 }
