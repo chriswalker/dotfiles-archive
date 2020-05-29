@@ -121,7 +121,7 @@ declare-option -hidden range-specs go_notcovered_range
 # -----------------------------------------------------------------------------
 define-command go-coverage -docstring "(Go) Show test coverage for the currently open file" %{
     evaluate-commands %sh{
-		if [[ ! "${kak_bufname}" =~ _\.go$ ]]; then
+		if [[ ! "${kak_bufname}" =~ \.go$ ]]; then
             printf "%s\n" "fail 'Not a Go file'"
 			exit
 		fi
