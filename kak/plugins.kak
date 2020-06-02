@@ -14,9 +14,9 @@ plug "andreyorst/fzf.kak" %{
     # map -docstring "fzf - Git files" global user r ': fzf-mode<ret>g<ret>'
 } defer fzf %{
     set-option global fzf_file_command 'rg'
-    set-option global fzf_tmux_height 10
-    set-option global fzf_tmux_height_file_preview 12
-    set-option global fzf_highlight_command 'bat'
+    # set-option global fzf_tmux_height 20
+    set-option global fzf_preview_tmux_height 40%
+    set-option global fzf_highlight_command 'bat --theme=Nord --color=always {}'
 }
 
 # kak-lsp - Installed via Homebrew, so not configured via plug.kak
