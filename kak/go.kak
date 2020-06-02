@@ -64,6 +64,11 @@ hook global WinSetOption filetype=(gomodfile) %{
 # -----------------------------------------------------------------------------
 define-command go-alternate -docstring "(Go) Switch to alternate file" %{
     evaluate-commands %sh{
+		if [[ ! "${kak_bufname}" =~ \.go$ ]]; then
+            printf "%s\n" "fail 'Not a Go file'"
+			exit
+		fi
+
         file_root=""
    	    file_suffix=""
    	    if [[ "${kak_bufname}" =~ _test\.go$ ]]; then
@@ -96,6 +101,11 @@ define-command go-alternate -docstring "(Go) Switch to alternate file" %{
 # -----------------------------------------------------------------------------   
 define-command go-test -docstring "(Go) Run tests in current package" %{
     evaluate-commands %sh{
+		if [[ ! "${kak_bufname}" =~ \.go$ ]]; then
+            printf "%s\n" "fail 'Not a Go file'"
+			exit
+		fi
+
         # Get diectory current buffer file is in & filename
         # bufname
         cur_dir=${kak_buffile%/*}
@@ -114,7 +124,7 @@ define-command go-test -docstring "(Go) Run tests in current package" %{
 declare-option bool go_display_coverage false
 # Range spec for code covered by a test
 declare-option -hidden range-specs go_covered_range
-# Range spec fof code not covered by a test
+# Range spec for code not covered by a test
 declare-option -hidden range-specs go_notcovered_range
 
 # Display test coverage in the current buffer
