@@ -62,7 +62,7 @@ evaluate-commands %sh{
 
         face global PrimaryCursor ${polar_night_darkest},${snow_storm_dark}+b
         face global SecondaryCursor ${polar_night_darkest},${frost_light}+fg
-        face global PrimaryCursorEol ${polar_night_darkest},${aurora_yellow}+fg
+        face global PrimaryCursorEol ${polar_night_darkest},${aurora_orange}+fg
         face global SecondaryCursorEol ${polar_night_darkest},${aurora_yellow}+fg
 
         face global LineNumbers ${polar_night_lightest},${polar_night_darkest}
@@ -95,6 +95,5 @@ evaluate-commands %sh{
     echo "
         face global Todo ${aurora_yellow}+fgb
         face global StatusFileName ${aurora_yellow},${polar_night_dark}+b
-        face global crosshairs_line ${polar_night_dark}+d
     "
 }
