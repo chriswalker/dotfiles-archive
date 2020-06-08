@@ -60,7 +60,7 @@ hook global WinSetOption filetype=(gomodfile) %{
     }
 }
 
-# Switch to alternate file (e.g. rom foo.go -> foo_test.go, go.mod -> go.sum)
+# Switch to alternate file (e.g. from foo.go -> foo_test.go, go.mod -> go.sum)
 # -----------------------------------------------------------------------------
 define-command go-alternate -docstring "(Go) Switch to alternate file" %{
     evaluate-commands %sh{
@@ -121,7 +121,7 @@ define-command go-test -docstring "(Go) Run tests in current package" %{
 }
 
 # Whether coverage highlights are being displayed
-declare-option bool go_display_coverage false
+declare-option -hidden bool go_display_coverage false
 # Range spec for code covered by a test
 declare-option -hidden range-specs go_covered_range
 # Range spec for code not covered by a test
