@@ -6,7 +6,7 @@
 # -----------------------------------------------------------------------------
 
 # Comment out lines
-map -docstring "comment/uncomment selection (<c-/>)" global normal '' ': comment-line<ret>'
+map -docstring "Comment/uncomment selection (<c-/>)" global normal '' ': comment-line<ret>'
 
 # Splits (opens up new tmux pane)
 map -docstring "Split horizontal" global user h :tmux-terminal-vertical<space>kak<space>c<space>%val{session}<ret>
@@ -59,6 +59,7 @@ map -docstring "LSP - Enter LSP user mode" global user l :enter-user-mode<space>
 # Go-specific mappings (Go functionality under construction)
 # -----------------------------------------------------------------------------
 
+# require-module golang
 # Switch to alterntive file (e.g. foo.go to foo_test.go)
 map -docstring "Go - Switch to alternate file" global user a :go-alternate<ret>
 # Run Go tests via <leader>-t

@@ -82,3 +82,10 @@ plug "alexherbo2/auto-pairs.kak"
 #         # matching characters
 #     }
 # }
+
+# golang.kak - additional Go-related functionality
+# -----------------------------------------------------------------------------
+plug "chriswalker/golang.kak" %{
+	# Override some highlighters
+	set-face global Uninstrumented 'rgb:616e88'
+}
