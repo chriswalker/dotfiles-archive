@@ -48,6 +48,9 @@ hook global WinSetOption filetype=go %{
         go-format -use=goimports
         lint
     }
+
+	# Override References face
+    set-face global Reference black,yellow+b
 }
 
 # Make the hover stuff suck less; supress the "no identifier found" info box
