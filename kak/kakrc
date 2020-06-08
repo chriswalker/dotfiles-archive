@@ -4,7 +4,6 @@ evaluate-commands %sh{
         plugins.kak
         mappings.kak
         modeline.kak
-        go.kak
     "
 
     for file in $files; do
