@@ -50,7 +50,7 @@ hook global WinSetOption filetype=go %{
     }
 
 	# Override References face
-    set-face global Reference black,yellow+b
+    set-face global Reference yellow+b
 }
 
 # Make the hover stuff suck less; supress the "no identifier found" info box
