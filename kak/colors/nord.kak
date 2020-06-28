@@ -26,8 +26,8 @@ evaluate-commands %sh{
 
     # Code
     echo "
-        face global value ${frost_darkest}
-        face global type ${frost_darkest}
+        face global value ${aurora_magenta}
+        face global type ${frost_dark}
         face global variable ${frost_light}
         face global module ${aurora_magenta}
         face global function ${frost_light}
