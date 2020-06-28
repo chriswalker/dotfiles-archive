@@ -10,7 +10,7 @@ ln -fs ~/dotfiles/fish ~/.config/fish
 ln -fs ~/dotfiles/nvim ~/.config/nvim
 ln -fs ~/dotfiles/kitty ~/.config/kitty
 ln -fs ~/dotfiles/kak ~/.config/kak
-ln -fs ~/dotfiles/alacrity ~/.config/alacritty/
+ln -fs ~/dotfiles/alacritty ~/.config/alacritty
 
 
 # Tweaked terminfo for tmux's $TERM, replacing ^H (backspace)
