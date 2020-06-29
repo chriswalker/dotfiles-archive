@@ -34,4 +34,4 @@ setw -g window-status-activity-style "fg=colour1,bg=colour240"
 # Right side
 set -g status-right-length 50
 set -g status-right-style "none"
-set -g status-right " #[fg=colour6] %a %H:%M %d/%m/%Y #[fg=colour6,bold][#S@#h] "
+set -g status-right " #[fg=colour6] %a %d %b %H:%M #[fg=colour6,bold][#S@#h] "
