@@ -5,18 +5,20 @@
 # Load plug.kak before doing anything else
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
-# fzf
+plug alexherbo2/prelude.kak
+plug alexherbo2/terminal-mode.kak
+
+# connect.kak
 # -----------------------------------------------------------------------------
-plug "andreyorst/fzf.kak" %{
-    map -docstring "fzf - Files" global user f ': fzf-mode<ret>f<ret>'
-    # TODO
-    map -docstring "fzf - tags" global user g ': fzf-mode<ret>t<ret>'
-    # map -docstring "fzf - Git files" global user r ': fzf-mode<ret>g<ret>'
-} defer fzf %{
-    set-option global fzf_file_command 'rg'
-    # set-option global fzf_tmux_height 20
-    set-option global fzf_preview_tmux_height 40%
-    set-option global fzf_highlight_command 'bat --theme=Nord --color=always {}'
+plug alexherbo2/connect.kak %{
+	define-command fzf-files -params .. -file-completion -docstring 'Open selected files with fzf' %{
+	connect-terminal sh -c %{
+    	edit $(fd --type file . "$@" | fzf)
+    	} -- %arg{@}
+    }
+
+    # <leader>-f to access fzf
+	map -docstring "fzf - Files" global user f ': fzf-files<ret>'
 }
 
 # kak-lsp - Installed via Homebrew, so not configured via plug.kak
