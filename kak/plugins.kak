@@ -5,24 +5,9 @@
 # Load plug.kak before doing anything else
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
-# Escape args prior to passing to Kakoune; dependency of connect.kak
-# -----------------------------------------------------------------------------
-plug "alexherbo2/prelude.kak"
-
 # auto-pairs (insert closing parentheses & braces automatically)
 # -----------------------------------------------------------------------------
 plug "alexherbo2/auto-pairs.kak"
-
-# connect.kak
-# -----------------------------------------------------------------------------
-plug "alexherbo2/connect.kak" %{
-    require-module connect-fzf
-
-    # <leader>-f to open files with fzf
-	map -docstring "fzf - Files" global user f ': fzf-files<ret>'
-    # <leader>-f to switch buffers with fzf
-	map -docstring "fzf - Buffers" global user b ': fzf-buffers<ret>'
-}
 
 # kak-lsp - Installed via Homebrew, so not configured via plug.kak
 # -----------------------------------------------------------------------------
@@ -59,7 +44,7 @@ hook global WinSetOption filetype=go %{
 # Make the hover stuff suck less; supress the "no identifier found" info box
 define-command -override -hidden lsp-show-error -params 1 -docstring "Render error (suppress useless gopls errors)" %{
     evaluate-commands %sh{
-        if [ "$1" = "go language server error: 'no identifier found'" ]; then
+        if [ "$1" = "go language server error: 'no object found'" ]; then
             exit 0
         fi
         echo 'info %arg{1}'

@@ -46,6 +46,9 @@ map global normal x ':extend-line-down %val{count}<ret>'
 # nX select n lines above
 map global normal X ':extend-line-up %val{count}<ret>'
 
+# Invoke fuzzy-finder
+map -docstring "Fuzzy-find files" global user f ':fz '
+
 # kak-lsp mappings
 # -----------------------------------------------------------------------------
  

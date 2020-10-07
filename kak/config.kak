@@ -34,3 +34,10 @@ hook global WinCreate .* %{
     # Highlight matches
     add-highlighter buffer/matching show-matching
 }
+
+# Fuzzy-finder replacement for fzf
+define-command fz -params 1 -shell-script-candidates %{
+    fd --type file --hidden
+} %{
+    edit %arg{1}
+}
