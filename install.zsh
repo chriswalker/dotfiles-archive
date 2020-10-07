@@ -2,7 +2,8 @@
 
 rm -rf ~/.config/fish ~/.config/nvim ~/.config/kitty ~/.config/kak
 
-ln -fs ~/dotfiles/tmux/.tmux.conf ~
+# ln -fs ~/dotfiles/tmux/.tmux.conf ~
+ln -fs ~/dotfiles/tmux ~/.config/tmux
 ln -fs ~/dotfiles/misc/.ripgreprc ~/.config/ripgrep
 ln -fs ~/dotfiles/misc/fd ~/.config/fd
 
