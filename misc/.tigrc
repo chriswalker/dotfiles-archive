@@ -1,4 +1,0 @@
-# Color overrides
-color cursor        color15 black bold
-color title-focus   white   black  bold
-color title-blur    white   black

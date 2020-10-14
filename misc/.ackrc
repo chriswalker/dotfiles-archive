@@ -1,5 +1,0 @@
-# Change default colour output for base16 (filenames are barely legible with default colours)
-#--color-filename=red
-#--color-match=yellow
-# Dark grey (!) with the base16-tomorrow iTerm2 theme
-#--color-lineno=on_bright_yellow
