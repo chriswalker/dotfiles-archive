@@ -1,13 +1,13 @@
 #!/bin/bash
 
-rm -rf ~/.config/fish ~/.config/nvim ~/.config/kitty ~/.config/kak
+# fish automatically creates ~/.config/fish/ if missing,
+# so delete it before linking
+rm -rf $XDG_CONFIG_HOME/fish
 
-ln -fs ~/dotfiles/bat ~/.config/bat
-ln -fs ~/dotfiles/tmux ~/.config/tmux
-ln -fs ~/dotfiles/ripgrep ~/.config/ripgrep
-ln -fs ~/dotfiles/fd ~/.config/fd
-ln -fs ~/dotfiles/fish ~/.config/fish
-ln -fs ~/dotfiles/nvim ~/.config/nvim
-ln -fs ~/dotfiles/kitty ~/.config/kitty
-ln -fs ~/dotfiles/kak ~/.config/kak
-ln -fs ~/dotfiles/alacritty ~/.config/alacritty
+DOTFILES_HOME=$HOME/dotfiles
+DOTS="alacritty bat fd fish kak kitty nvim ripgrep tmux"
+
+for DOT in $DOTS ; do
+    echo "Linking $DOT..."
+    ln -fs $DOTFILES_HOME/$DOT $XDG_CONFIG_HOME/
+done
