@@ -15,9 +15,9 @@ set -U EDITOR kak
 set fish_key_bindings fish_vi_key_bindings
 
 # Config paths for tools 
-set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep
-set -x BAT_CONFIG_PATH $HOME/dotfiles/misc/bat/bat.conf
-set -x XDG_CONFIG_HOME $HOME/.config/
+set -x XDG_CONFIG_HOME $HOME/.config
+set -x RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/.ripgreprc
+set -x BAT_CONFIG_PATH $XDG_CONFIG_HOME/bat/bat.conf
 
 # Data directory for docker volume mounts etc
 set -g DATA_HOME ~/Dev/data
