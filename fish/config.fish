@@ -26,3 +26,10 @@ set -g DATA_HOME ~/Dev/data
 # -----------------------------------------------------------------------------
 set files paths.fish fzf.fish ui.fish aliases.fish work.fish
 for file in $files; source $XDG_CONFIG_HOME/fish/$file; end
+
+# Start X Server
+if status is-login
+    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+        exec startx -- -keeptty &> /dev/null
+    end
+end

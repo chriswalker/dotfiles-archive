@@ -9,12 +9,7 @@ if test -e ~/Dev/Go
   set -x GOPATH ~/Dev/Go
   set -x GOBIN $GOPATH/bin
 
-  switch (uname)
-  case Linux
-    set -g GOROOT /usr/local/go
-  case Darwin
-    set -g GOROOT /usr/local/Cellar/go@1.13/1.13.9/libexec
-  end
+  set -g GOROOT /usr/local/go
 
   # Update path
   set PATH $GOROOT/bin $GOBIN $PATH
@@ -25,10 +20,7 @@ if test -e ~/Dev/Go
   # set -x GONOPROXY "*"
 end
 
+# TODO
 set PATH ~/bin $PATH
 
-# GCP
-switch (uname)
-case Darwin
-  set PATH ~/Dev/Work/google-cloud-sdk/bin $PATH
-end
+set PATH ~/.local/bin $PATH
