@@ -24,7 +24,7 @@ set -g DATA_HOME ~/Dev/data
 
 # Source other config files
 # -----------------------------------------------------------------------------
-set files paths.fish fzf.fish ui.fish aliases.fish work.fish
+set files paths.fish fzf.fish ui.fish aliases.fish
 for file in $files; source $XDG_CONFIG_HOME/fish/$file; end
 
 # Start X Server
