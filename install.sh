@@ -5,9 +5,12 @@
 rm -rf $XDG_CONFIG_HOME/fish
 
 DOTFILES_HOME=$HOME/dotfiles
-DOTS="alacritty bat fd fish kak kitty nvim ripgrep tmux"
+DOTS="alacritty bat bspwm dconf dunst fd fish gtk-3.0 kak picom polybar pulse ripgrep rofi sxhkd Thunar tmux xfce4"
 
 for DOT in $DOTS ; do
     echo "Linking $DOT..."
     ln -fs $DOTFILES_HOME/$DOT $XDG_CONFIG_HOME/
 done
+
+ln -fs $DOTFILES_HOME/.xinitrc $HOME
+ln -fs $DOTFILES_HOME/.xprofile $HOME
