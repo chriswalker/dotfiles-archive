@@ -1,0 +1,6 @@
+[user]
+	email = thatamazingweb@gmail.com
+	name = Chris Walker
+[core]
+	editor = kak
+	attributesfile = $HOME/.config/git/.gitattributes
