@@ -43,8 +43,11 @@ hsetroot -solid '#4C566A'
 # Start up compositor
 picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 
-# Panel
+# Panel + tray applets
 $HOME/.config/polybar/launch.sh
+nm-applet &
+fbxkb &
+blueman-applet &
 
 # Start sxkhd
 sxhkd &
