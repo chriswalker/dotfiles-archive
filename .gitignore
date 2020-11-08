@@ -10,3 +10,4 @@ fish/fishd.*
 fish/fish_variables
 misc/kk/history.yaml
 kak/plugins
+systemd/user/default.target.wants
