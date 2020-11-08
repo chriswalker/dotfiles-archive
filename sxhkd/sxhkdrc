@@ -1,39 +1,49 @@
-#
-# wm independent hotkeys
-#
+# WM-independent hotkeys
+# -----------------------------------------------------------------------------
 
-# terminal emulator
+# Display cheatsheet via rofi
+super + F1
+	rofi -normal-window -e "Cheatsheet shown here, read in from file" -markup
+
+# Switch windows
+alt + Tab
+	rofi -show window -lines 5 -normal-window
+
+# Reload sxhkd configuration files
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Launch terminal emulator
 super + Return
 #	exo-open --launch TerminalEmulator
 	alacritty
 
-# program launcher
-# super + @space
-# 	rofi -show dmenu
-super + @space
-	rofi_run -d
-
-# make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
-
-# Browser
+# Launch browser
 super + w
 #    exo-open --launch WebBrowser
 	firefox
 
-# Files
+# Launch file manager
 super + f
 #    exo-open --launch FileManager
 	Thunar
 
+# Program launcher via rofi
+super + @space
+#	 rofi_run -d
+	rofi -show drun -lines 10 -normal-window -show-icons
+
 # Logout menu via rofi
 super + x
-    rofi_run -l
+#     rofi_run -l
+	$XDG_CONFIG_HOME/rofi/powermenu.sh
 
-#
+# Open Notion in new Firefox window
+super + n
+	firefox --new-window https://www.notion.so/
+
 # bspwm hotkeys
-#
+# -----------------------------------------------------------------------------
 
 # quit/restart bspwm
 super + alt + {q,r}
