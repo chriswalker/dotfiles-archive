@@ -63,10 +63,8 @@ map -docstring "LSP - Enter LSP user mode" global user l :enter-user-mode<space>
 # -----------------------------------------------------------------------------
 
 # require-module golang
-# Switch to alterntive file (e.g. foo.go to foo_test.go)
 map -docstring "Go - Switch to alternate file" global user a :go-alternate<ret>
-# Run Go tests via <leader>-t
 map -docstring "Go - Run tests in current package" global user t :go-test<ret>
-# Show godoc for symbol under cursor
 map -docstring "Go - Display godoc for symbol under cursor" global user d :go-doc-info<ret>
 map -docstring "Go - Display coverage for current file" global user c :go-coverage<ret>
+map -docstring "Go - Add JSON tags to struct" global user j :go-add-tags<space>json<ret>
