@@ -4,17 +4,7 @@
 # @author Chris Walker
 #
 
-# Architecture-specific
-switch (uname)
-case Linux
-  alias ls "ls -GFh --color=auto"
-case Darwin
-  alias ls "ls -GFh"
-  alias ql "qlmanage -p"
-  alias o "open"
-  # Alias Neovim's less script to normal less
-  alias less "/usr/local/Cellar/neovim/0.2.1/share/nvim/runtime/macros/less.sh $1"
-end
+alias ls "ls -GFh --color=auto"
 
 # General
 # TODO - tweak history aliases
@@ -40,6 +30,3 @@ alias kdp "kubectl describe pod $1"
 alias d "docker"
 alias dps "docker ps"
 
-# GCloud
-alias gct "gcloud config configurations activate taw"
-alias gck "gcloud config configurations activate default"
