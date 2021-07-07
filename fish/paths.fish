@@ -25,10 +25,5 @@ if test -e ~/Dev/Go
   # set -x GONOPROXY "*"
 end
 
-set PATH ~/bin $PATH
+set PATH ~/.local/bin $PATH
 
-# GCP
-switch (uname)
-case Darwin
-  set PATH ~/Dev/Work/google-cloud-sdk/bin $PATH
-end
