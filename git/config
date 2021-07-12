@@ -4,3 +4,7 @@
 [core]
 	editor = kak
 	attributesfile = $HOME/.config/git/.gitattributes
+[pull]
+	rebase = false
+[url "git@github.com:"]
+    insteadOf = https://github.com/
