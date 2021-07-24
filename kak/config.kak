@@ -41,3 +41,24 @@ define-command fz -params 1 -shell-script-candidates %{
 } %{
     edit %arg{1}
 }
+
+# Container-awareness
+# -----------------------------------------------------------------------------
+
+# Flag indicating whether Kakoune is running inside a toolbox container
+declare-option bool in_toolbox false
+# Name of the toolbox container, if running in one
+declare-option str toolbox_name
+
+# Checks whether Kakoune is running inside a toolbox container;
+# assumes Podman for the moment
+hook global KakBegin .* %{
+    evaluate-commands %sh{
+        containerenv="/run/.containerenv"
+		if [ -f $containerenv ]; then
+			printf "%s\n" "set-option global in_toolbox true"
+            toolbox_name=$(grep name ${containerenv} | cut -d '"' -f2)
+            printf 'set-option global toolbox_name %%{%s}' "${toolbox_name}"
+		fi
+    }
+}
