@@ -4,17 +4,14 @@
 # @author Chris Walker
 #
 
-# Golang
-if test -e ~/Dev/Go
-  set -x GOPATH ~/Dev/Go
+set PATH ~/.local/bin $PATH
+
+# Golang, provided we're in a toolbox container
+if string match -q "true" (in_podman)
+  set -x GOPATH /opt/go
   set -x GOBIN $GOPATH/bin
 
-  switch (uname)
-  case Linux
-    set -g GOROOT /usr/local/go
-  case Darwin
-    set -g GOROOT /usr/local/Cellar/go@1.13/1.13.9/libexec
-  end
+  # set -g GOROOT /usr/lib/golang
 
   # Update path
   set PATH $GOROOT/bin $GOBIN $PATH
@@ -24,6 +21,3 @@ if test -e ~/Dev/Go
   # set -x GONOSUMDB "*"
   # set -x GONOPROXY "*"
 end
-
-set PATH ~/.local/bin $PATH
-
