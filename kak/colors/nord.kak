@@ -76,13 +76,13 @@ evaluate-commands %sh{
 
         face global Error ${aurora_red},${polar_night_dark}
 
-        face global StatusLine ${snow_storm_dark},${polar_night_dark}
+        face global StatusLine ${snow_storm_dark},${polar_night_dark}+b
         face global StatusLineMode ${polar_night_darkest},${aurora_green}
         face global StatusLineInfo ${frost_light}
-        face global StatusLineValue ${aurora_green}+b
-        face global StatusCursor ${polar_night_darkest},${frost_light}
+        face global StatusLineValue ${aurora_green}
+        face global StatusCursor ${polar_night_darkest},${snow_storm_dark}
 
-        face global Prompt ${polar_night_darkest},${frost_light}
+        face global Prompt ${snow_storm_dark},${polar_night_dark}+b
 
         face global MatchingChar ${frost_light},${polar_night_darkest}+b
 
