@@ -9,12 +9,9 @@ if test -e ~/Dev/Go
   set -x GOPATH ~/Dev/Go
   set -x GOBIN $GOPATH/bin
 
-  switch (uname)
-  case Linux
-    set -g GOROOT /usr/local/go
-  case Darwin
-    set -g GOROOT /usr/local/Cellar/go@1.13/1.13.9/libexec
-  end
+  # Sam for Linux + Darwin, provided we use standard installer
+  # on Macs and not Homebrew
+  set -g GOROOT /usr/local/go
 
   # Update path
   set PATH $GOROOT/bin $GOBIN $PATH
@@ -27,8 +24,3 @@ end
 
 set PATH ~/bin $PATH
 
-# GCP
-switch (uname)
-case Darwin
-  set PATH ~/Dev/Work/google-cloud-sdk/bin $PATH
-end
