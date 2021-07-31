@@ -5,7 +5,7 @@
 rm -rf $XDG_CONFIG_HOME/fish
 
 DOTFILES_HOME=$HOME/dotfiles
-DOTS="alacritty bat fd fish git kak kitty nvim ripgrep tmux"
+DOTS="bat fd fish git kak kitty nvim ripgrep"
 
 for DOT in $DOTS ; do
     echo "Linking $DOT..."
