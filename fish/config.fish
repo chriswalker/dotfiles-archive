@@ -24,7 +24,7 @@ set -g DATA_HOME ~/Dev/data
 
 # Set exa colours
 # ----------------------------------------------------------------------------
-set -x EXA_COLORS "uu=37:un=37:gu=33:gn=37:da=37:sn=36:sb=36:ur=37:gr=35:tr=35:uw=37:gw=35:ow=35:ue=37:gx=35:tx=35:lp=32"
+set -x EXA_COLORS "uu=37:un=37:gu=33:gn=37:da=37:sn=36:sb=36:ur=37:gr=35:tr=35:uw=37:gw=35:tw=35:ue=37:gx=35:tx=35:lp=32"
 
 # Source other config files
 # -----------------------------------------------------------------------------
