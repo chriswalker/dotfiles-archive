@@ -4,7 +4,6 @@
 # @author Chris Walker
 #
 
-# Architecture-specific
 alias ls "ls -GFh"
 alias ql "qlmanage -p"
 alias o "open"
@@ -25,6 +24,9 @@ alias tree "tree -aC -I \"vendor|.git\""
 
 # Bat instead of plain cat
 alias cat "bat"
+
+# exa instead of plain ls
+alias ls "exa --git --git-ignore --group-directories-first"
 
 # k8s aliases; see also ./fish/functions
 # alias k "kubectl"
