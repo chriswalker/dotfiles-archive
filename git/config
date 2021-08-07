@@ -6,3 +6,12 @@
 	attributesfile = $HOME/.config/git/.gitattributes
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[color "status"]
+	header = white bold
+	added = green
+	changed = red
+	untracked = blue
+	branch = blue bold
+[color "diff"]
+	hunk = cyan bold
+	func = blue bold
