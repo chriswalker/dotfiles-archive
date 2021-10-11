@@ -40,6 +40,19 @@ hook global WinSetOption filetype=go %{
     }
 }
 
+# Shell scripts
+hook global WinSetOption filetype=sh %{
+    # Use golangci-lint for linting
+    set window lintcmd 'shellcheck -fgcc -Cnever'
+    set window formatcmd 'shfmt -ci -i 2'
+
+    # Format and lint on save
+    hook buffer BufWritePre .* %{
+        format
+        lint
+    }
+}
+
 # Make the hover stuff suck less; supress the "no identifier found" info box
 define-command -override -hidden lsp-show-error -params 1 -docstring "Render error (suppress useless gopls errors)" %{
     evaluate-commands %sh{
