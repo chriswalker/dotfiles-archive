@@ -2,8 +2,8 @@
 # General configuration for Kakoune - UI tweaks, highlighters and so on.
 # -----------------------------------------------------------------------------
 
-# ncurses changes: get rid og clippy, don't chamge terminal title
-set global ui_options ncurses_assistant=off ncurses_set_title=false
+# UI changes: get rid of clippy, don't chamge terminal title
+set global ui_options terminal_assistant=off terminal_set_title=false
 
 # Set tab widths to 4 spaces
 set-option global tabstop 4
