@@ -41,3 +41,9 @@ define-command fz -params 1 -shell-script-candidates %{
 } %{
     edit %arg{1}
 }
+
+# Set bats (Bash unit-test) files to `sh` filetype, and pick up
+# default highlighting
+hook global BufCreate .*\.bats %{
+    set buffer filetype sh
+}
