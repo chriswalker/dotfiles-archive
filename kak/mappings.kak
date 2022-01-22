@@ -6,7 +6,7 @@
 # -----------------------------------------------------------------------------
 
 # Comment out lines
-map -docstring "Comment/uncomment selection (<c-/>)" global normal '' ': comment-line<ret>'
+map -docstring "Comment/uncomment selection (<c-/>)" global normal <c-/> ': comment-line<ret>'
 
 # Splits (opens up new tmux pane)
 map -docstring "Split horizontal" global user h :tmux-terminal-vertical<space>kak<space>c<space>%val{session}<ret>
