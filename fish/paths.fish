@@ -23,4 +23,5 @@ if test -e ~/Dev/Go
 end
 
 set PATH ~/bin $PATH
+set PATH ~/.local/bin $PATH
 
