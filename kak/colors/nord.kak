@@ -32,10 +32,12 @@ evaluate-commands %sh{
         face global module ${aurora_magenta}
         face global function ${frost_light}
         face global string ${aurora_green}
-        face global keyword ${frost_dark}
+        # face global keyword ${frost_dark}
+        face global keyword ${snow_storm_dark}+b
         face global operator ${frost_light}
         face global attribute ${aurora_orange}
         face global comment ${polar_night_comment}+i
+        # face global comment ${frost_darkest}+i
         face global meta ${frost_dark}
         face global builtin default+b #?
     "
@@ -76,7 +78,7 @@ evaluate-commands %sh{
 
         face global Error ${aurora_red},${polar_night_dark}
 
-        face global StatusLine ${snow_storm_dark},${polar_night_dark}
+        face global StatusLine ${snow_storm_dark},${polar_night_dark}+b
         face global StatusLineMode ${polar_night_darkest},${aurora_green}
         face global StatusLineInfo ${frost_light}
         face global StatusLineValue ${aurora_green}+b
