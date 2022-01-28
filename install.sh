@@ -5,7 +5,7 @@
 rm -rf $XDG_CONFIG_HOME/fish
 
 DOTFILES_HOME=$HOME/dotfiles
-DOTS="bat fd fish fzf git kak kitty ripgrep"
+DOTS="bat fd fish fzf git kak kitty ripgrep wezterm"
 
 for DOT in $DOTS ; do
     echo "Linking $DOT..."
