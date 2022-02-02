@@ -49,6 +49,8 @@ return {
     color_scheme = "nord",
 
     colors = {
+        -- Hm, doesn't seem to work
+        split = "#D8DEE9",
         tab_bar = {
             background = "#3B4252",
             active_tab = {
@@ -79,7 +81,7 @@ return {
     },
 
     inactive_pane_hsb = {
-        brightness = 0.75,
+        brightness = 0.6,
     },
     
     -- Font config
@@ -106,4 +108,6 @@ return {
     -- Sundries
     -- ------------------------------------------------------------------------ 
     exit_behavior = "Close",
+    -- We are on Wayland
+    enable_wayland = true,
 }
