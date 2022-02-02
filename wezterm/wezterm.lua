@@ -30,7 +30,7 @@ table.insert(mymappings, {key = "K", mods = "ALT|SHIFT", action=wezterm.action{A
 table.insert(mymappings, {key = "L", mods = "ALT|SHIFT", action=wezterm.action{AdjustPaneSize={"Right", 5}}})
 
 -- Create new tab
-table.insert(mymappings, {key="t", mods="ALT", action=wezterm.action{SpawnTab="CurrentPaneDomain"}})
+table.insert(mymappings, {key="t", mods="ALT", action=wezterm.action{SpawnTab="DefaultDomain"}})
 
 -- Increase/decrease font size
 table.insert(mymappings, {key="+", mods="ALT|SHIFT", action="IncreaseFontSize"})
@@ -76,10 +76,11 @@ return {
                 intensity = "Bold",
             },
         },
+        split = "#444444",
     },
 
     inactive_pane_hsb = {
-        brightness = 0.75,
+        brightness = 0.6,
     },
     
     -- Font config
