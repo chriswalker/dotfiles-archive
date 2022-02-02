@@ -5,12 +5,8 @@
 # General mappings
 # -----------------------------------------------------------------------------
 
-# Comment out lines
-map -docstring "Comment/uncomment selection (<c-/>)" global normal <c-/> ': comment-line<ret>'
-
-# Splits (opens up new tmux pane)
-map -docstring "Split horizontal" global user h :tmux-terminal-vertical<space>kak<space>c<space>%val{session}<ret>
-map -docstring "Split vertical" global user v :tmux-terminal-horizontal<space>kak<space>c<space>%val{session}<ret>
+# Comment out lines 
+map -docstring "Comment/uncomment selection (#)" global normal '#' ': comment-line<ret>'
 
 # jj to escape
 hook global InsertChar j %{ 
